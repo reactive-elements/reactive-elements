@@ -1,9 +1,9 @@
 ![Reactive Elements](http://pixelscommander.com/polygon/reactag/assets/logo-reactive-elements.png "Reactive Elements")
 
-Reactive Elements
+React.js + X-Tag
 =================
 
-Lightweight X-Tag add-on which allows to use React.js components as custom elements.
+Lightweight X-Tag add-on which allows to use React.js components as custom HTML elements.
 
 Example
 -------
@@ -27,6 +27,6 @@ Example
 	
 ##License
 
-**MIT**: http://mit-license.org/
+MIT: http://mit-license.org/
 
 Copyright 2014 Denis Radin aka [PixelsCommander](http://pixelscommander.com)
