@@ -1,0 +1,13 @@
+{
+  "name": "Polymer",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "react": "~0.10.0",
+    "x-tag-core": "~0.9.4"
+  }
+}

@@ -1,0 +1,1 @@
+!function(n){void 0!==n.xtag&&(n.xtag.registerReact=function(t,e){var o={};n.xtag.register(t,{"extends":"div",lifecycle:{created:function(){o=new e(this.attributes),React.renderComponent(o,this)},inserted:function(){o.componentDidMount&&o.componentDidMount()},removed:function(){o.componentWillUnmount&&o.componentDidMount()},attributeChanged:function(){}}})})}(window);
