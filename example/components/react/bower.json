@@ -1,0 +1,12 @@
+{
+  "name": "react",
+  "version": "0.10.0",
+  "main": "react.js",
+  "_id": "react@0.10.0",
+  "readme": "ERROR: No README.md file found!",
+  "description": "ERROR: No README.md file found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/facebook/react-bower.git"
+  }
+}
