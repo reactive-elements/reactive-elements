@@ -17,10 +17,10 @@ Example
 **React component definition**
 
 	/* @jsx React.DOM */
-	Carusel = React.createClass({
+	MyComponent = React.createClass({
 	    render: function() {
 	        return <ul><li>React content</li></ul>;
 	    }
 	});
 	
-	xtag.registerReact('my-react-component', Carusel);
+	xtag.registerReact('my-react-component', MyComponent);
