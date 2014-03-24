@@ -5,8 +5,7 @@ React.js + X-Tag
 
 Lightweight X-Tag add-on which allows to use React.js components as custom HTML elements.
 
-Example
--------
+##Example
 
 **Using component in HTML**
 
@@ -25,6 +24,11 @@ Example
 	
 	xtag.registerReact('my-react-component', MyComponent);
 	
+##Dependencies
+- React.js
+- X-Tag core
+
+
 ##License
 
 MIT: http://mit-license.org/
