@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>React.js as X-Tag components demo</title>
-    <script src="./components/x-tag-core/dist/x-tag-core.js"></script>
+    <title>React.js components as HTML custom elements</title>
+    <link rel="stylesheet" href="./css/style.css"></link>
+    <script src="./components/x-tag-core/dist/x-tag-core.js "></script>
     <script src="./components/react/react.min.js"></script>
-    <script src="../src/react-xtag.js"></script>
+    <script src="../src/reactive-elements.js"></script>
     <script src="./dist/lgi-carusel.js"></script>
+    <script>
+        window.LGI.networks = [
+            {'text': 'First network'},
+            {'text': 'Second network'},
+            {'text': 'Third network'}
+        ];
+    </script>
 </head>
 <body>
-    <lgi-carusel></lgi-carusel>
+    <lgi-app>
+        <lgi-carusel class="left_top_widget" items="{window.LGI.networks}"></lgi-carusel>
+    </lgi-app>
 </body>
 </html>

@@ -3,7 +3,12 @@ window.LGI = {};
 
 window.LGI.Carusel = React.createClass({
     render: function() {
-        return <ul><li>React test</li></ul>;
+        var rows = [];
+        this.props.items.forEach(function(item) {
+            rows.push(<li key={item.text}>{item.text}</li>);
+        });
+
+        return <ul>{rows}</ul>
     }
 });
 

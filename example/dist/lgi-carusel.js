@@ -4,7 +4,12 @@ window.LGI = {};
 
 window.LGI.Carusel = React.createClass({displayName: 'Carusel',
     render: function() {
-        return React.DOM.ul(null, React.DOM.li(null, "React test"));
+        var rows = [];
+        this.props.items.forEach(function(item) {
+            rows.push(React.DOM.li( {key:item.text}, item.text));
+        });
+
+        return React.DOM.ul(null, rows)
     }
 });
 
