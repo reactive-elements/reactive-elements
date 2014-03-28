@@ -4,9 +4,21 @@
     var propertiesMapping = {
         'class': 'className',
         'onclick': 'onClick',
-        'onmousedown': 'onMouseDown',
-
+        'onmousedown': 'onMouseDown'
     };
+
+    var extend = function (extandable, extending) {
+        for (var i in extending) {
+            if (extandable[i] === undefined) {
+
+                if (typeof extending[i] === 'function') {
+                    extandable[i] = extending[i].bind(extending);
+                } else {
+                    extandable[i] = extending[i];
+                }
+            }
+        }
+    }
 
     var getPropertiesFromAttributes = function (attributes) {
         var result = {};
@@ -35,18 +47,12 @@
 
         w.xtag.register(elementName, {
             extends: 'div',
+            prototype: reactClass.prototype,
             lifecycle: {
                 created: function () {
                     element = new reactClass(getPropertiesFromAttributes(this.attributes));
+                    extend(this, element);
                     React.renderComponent(element, this);
-                },
-                inserted: function () {
-                    if (element.componentDidMount)
-                        element.componentDidMount();
-                },
-                removed: function () {
-                    if (element.componentWillUnmount)
-                        element.componentDidMount();
                 },
                 attributeChanged: function (a, b, c) {
 
