@@ -4,7 +4,6 @@ window.LGI = {};
 
 window.LGI.Carusel = React.createClass({displayName: 'Carusel',
     getInitialState: function() {
-        this.getDOMNode().parentNode().style.opacity = 1;
         return {
             color: '#000000'
         };
