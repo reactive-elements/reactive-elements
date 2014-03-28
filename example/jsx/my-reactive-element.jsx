@@ -18,7 +18,7 @@ window.LGI.Carusel = React.createClass({
             rows.push(<li key={item.text}>{item.text}</li>);
         });
 
-        return <div>&lt;some reactive element&gt;<ul style={this.state}>{rows}</ul>&lt;/some reactive element&gt;</div>;
+        return <div>&lt;my-reactive-element&gt;<ul style={this.state}>{rows}</ul>&lt;/my-reactive-element&gt;</div>;
     },
     changeColor: function(color) {
         this.state.color = color;
@@ -26,4 +26,4 @@ window.LGI.Carusel = React.createClass({
     }
 });
 
-xtag.registerReact('lgi-carusel', window.LGI.Carusel);
+xtag.registerReact('my-reactive-element', window.LGI.Carusel);

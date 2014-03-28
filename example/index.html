@@ -6,7 +6,7 @@
     <script src="./components/x-tag-core/dist/x-tag-core.js "></script>
     <script src="./components/react/react.js"></script>
     <script src="../src/reactive-element.js"></script>
-    <script src="./dist/lgi-carusel.js"></script>
+    <script src="./dist/my-reactive-element.js"></script>
     <script>
         window.browsers = [
             {'text': 'Chrome'},
@@ -50,7 +50,7 @@
             </li>
         </ul>
     </div>
-    <lgi-carusel id="carusel" class="left_top_widget" items="{window.browsers}"></lgi-carusel>
+    <my-reactive-element id="carusel" class="left_top_widget" items="{window.browsers}"></my-reactive-element>
     <script>
         function callToReactComponentMethod() {
             document.getElementById('carusel').changeColor('red');
@@ -71,7 +71,7 @@
         }
 
         function addReactiveElement() {
-            var carusel = document.createElement('lgi-carusel');
+            var carusel = document.createElement('my-reactive-element');
             carusel.className = 'right_top_widget';
             carusel.props.items = window.browsers;
             document.body.appendChild(carusel);
