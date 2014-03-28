@@ -8,7 +8,10 @@ body, html {
     background-color: #ffffff;
     color: #000000;
     display: block;
-    margin-left: 5%;
+}
+
+html {
+    margin: 5% 0 5% 5%;
 }
 
 button {
@@ -25,7 +28,7 @@ button {
 }
 
 img {
-    margin: 5% 0 5% 0;
+    margin: 0 0 5% 0;
 }
 
 button:active {

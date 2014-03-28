@@ -5,6 +5,8 @@ React.js + X-Tag
 
 Lightweight X-Tag add-on which allows to use React.js components as custom HTML elements.
 
+[Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
+
 ##Example
 
 **Using component in HTML**
