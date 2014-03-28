@@ -5,7 +5,7 @@ window.LGI = {};
 window.LGI.Carusel = React.createClass({displayName: 'Carusel',
     getInitialState: function() {
         return {
-            color: '#ffffff'
+            color: '#000000'
         };
     },
     render: function() {
@@ -19,7 +19,7 @@ window.LGI.Carusel = React.createClass({displayName: 'Carusel',
             rows.push(React.DOM.li( {key:item.text}, item.text));
         });
 
-        return React.DOM.ul( {style:this.state}, rows)
+        return React.DOM.div(null, "<reactive element>",React.DOM.ul( {style:this.state}, rows),"</reactive element>");
     },
     changeColor: function(color) {
         this.state.color = color;

@@ -8,10 +8,12 @@
     <script src="../src/reactive-element.js"></script>
     <script src="./dist/lgi-carusel.js"></script>
     <script>
-        window.LGI.networks = [
-            {'text': 'First network'},
-            {'text': 'Second network'},
-            {'text': 'Third network'}
+        window.browsers = [
+            {'text': 'Chrome'},
+            {'text': 'Firefox'},
+            {'text': 'Safari'},
+            {'text': 'Opera'},
+            {'text': 'IE'}
         ];
 
         window.justNames = [
@@ -29,6 +31,7 @@
 </head>
 <body>
     <div>
+        <img src="http://pixelscommander.com/polygon/reactag/assets/logo-reactive-elements.png"></img>
         <ul>
             <li>
                 <button onclick="changePropertiesDirectly()">Change component properties directly and force update</button>
@@ -40,11 +43,14 @@
                 <button onclick="changeAttribute()">Change component attributes</button>
             </li>
             <li>
+                <button onclick="changeAttribute2()">Change component attributes 2</button>
+            </li>
+            <li>
                 <button onclick="addReactiveElement()">Add component with document.createElement</button>
             </li>
         </ul>
     </div>
-    <lgi-carusel id="carusel" class="left_top_widget" items="{window.LGI.networks}"></lgi-carusel>
+    <lgi-carusel id="carusel" class="left_top_widget" items="{window.browsers}"></lgi-carusel>
     <script>
         function callToReactComponentMethod() {
             document.getElementById('carusel').changeColor('red');
@@ -52,6 +58,10 @@
 
         function changeAttribute() {
             document.getElementById('carusel').setAttribute('items', '{window.justBirds}');
+        }
+
+        function changeAttribute2() {
+            document.getElementById('carusel').setAttribute('items', '{window.browsers}');
         }
 
         function changePropertiesDirectly() {
@@ -63,7 +73,7 @@
         function addReactiveElement() {
             var carusel = document.createElement('lgi-carusel');
             carusel.className = 'right_top_widget';
-            carusel.props.items = window.LGI.networks;
+            carusel.props.items = window.browsers;
             document.body.appendChild(carusel);
             carusel.forceUpdate();
         }

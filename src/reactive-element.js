@@ -37,24 +37,35 @@
     }
 
     w.xtag.registerReact = function (elementName, reactClass) {
-        (function(){
-            w.xtag.register(elementName, {
-                extends: 'div',
-                lifecycle: {
-                    created: function () {
-                        this.reactiveElement = {};
-                        this.reactiveElement = new reactClass(getPropertiesFromAttributes(this.attributes));
-                        extend(this, this.reactiveElement);
-                        getterSetter(this, 'props', function(){ return this.reactiveElement.props; }, function(value){ this.reactiveElement.props = value; })
-                        React.renderComponent(this.reactiveElement, this);
-                    },
-                    attributeChanged: function () {
-                        this.reactiveElement.props = getPropertiesFromAttributes(this.attributes);
-                        this.reactiveElement.forceUpdate();
+        w.xtag.register(elementName, {
+            lifecycle: {
+                created: function () {
+                    this.reactiveElement = {};
+                    this.reactiveElement = new reactClass(getPropertiesFromAttributes(this.attributes));
+                    extend(this, this.reactiveElement);
+                    getterSetter(this, 'props', function(){
+                        return this.reactiveElement.props;
+                    }, function(value){
+                        this.reactiveElement.props = value;
+                    });
+                    React.renderComponent(this.reactiveElement, this);
+                },
+                accessors: {
+                    'props': {
+                        get: function(){
+                            return this.reactiveElement.props;
+                        },
+                        set: function(newProps){
+                            return this.reactiveElement.props = newProps;
+                        }
                     }
+                },
+                attributeChanged: function () {
+                    this.reactiveElement.props = getPropertiesFromAttributes(this.attributes);
+                    this.reactiveElement.forceUpdate();
                 }
-            })
-        })();
+            }
+        });
     };
 })(window)
 
