@@ -10,7 +10,7 @@ body, html {
     display: block;
 }
 
-.wrapper {
+#wrapper {
     max-width: 70%;
     width: 90%;
     margin: 5% 0 5% 5%;
@@ -56,6 +56,10 @@ ul {
 
 li {
     margin: 0;
+}
+
+#wrapper>ul>li {
+    display: inline-block;
 }
 
 my-reactive-element {

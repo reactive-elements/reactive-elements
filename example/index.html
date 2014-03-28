@@ -30,28 +30,22 @@
     </script>
 </head>
 <body>
-<div class="wrapper">
-    <div>
-        <img src="../assets/logo-reactive-elements-small.png"></img>
-        <h1>React.js components as native HTML elements</h1>
-        <ul>
-            <li>
-                <button onclick="changePropertiesDirectly()">Change component properties directly and force update</button>
-            </li>
-            <li>
-                <button onclick="callToReactComponentMethod()">Execute React component method</button>
-            </li>
-            <li>
-                <button onclick="changeAttribute()">Change component attributes</button>
-            </li>
-            <!--<li>
-                <button onclick="changeAttribute2()">Change component attributes 2</button>
-            </li>-->
-            <li>
-                <button onclick="addReactiveElement()">Add component with document.createElement</button>
-            </li>
-        </ul>
-    </div>
+<div id="wrapper">
+    <img src="../assets/logo-reactive-elements-small.png"></img>
+    <h1>React.js components as native HTML elements</h1>
+    <ul>
+        <li>
+            <button onclick="changePropertiesDirectly()">Change component properties directly and force update</button>
+        </li><li>
+            <button onclick="callToReactComponentMethod()">Execute React component method</button>
+        </li><li>
+            <button onclick="changeAttribute()">Change component attributes</button>
+        </li><!--<li>
+            <button onclick="changeAttribute2()">Change component attributes 2</button>
+        </li>--><li>
+            <button onclick="addReactiveElement()">Add component with document.createElement</button>
+        </li>
+    </ul>
     <my-reactive-element id="carusel" class="left_top_widget" items="{window.browsers}"></my-reactive-element>
     <script>
         function callToReactComponentMethod() {
@@ -76,7 +70,9 @@
             var carusel = document.createElement('my-reactive-element');
             carusel.className = 'right_top_widget';
             carusel.props.items = window.browsers;
-            document.body.appendChild(carusel);
+
+            var wrapper = document.getElementById('wrapper')
+            wrapper.appendChild(carusel);
             carusel.forceUpdate();
         }
     </script>
