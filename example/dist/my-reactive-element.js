@@ -4,6 +4,7 @@ window.LGI = {};
 
 window.LGI.Carusel = React.createClass({displayName: 'Carusel',
     getInitialState: function() {
+        this.getDOMNode().parentNode().style.opacity = 1;
         return {
             color: '#000000'
         };
@@ -19,7 +20,7 @@ window.LGI.Carusel = React.createClass({displayName: 'Carusel',
             rows.push(React.DOM.li( {key:item.text}, item.text));
         });
 
-        return React.DOM.div(null, "<my reactive element>",React.DOM.ul( {style:this.state}, rows),"</my reactive element>");
+        return React.DOM.div(null, "<my-reactive-element>",React.DOM.ul( {style:this.state}, rows),"</my-reactive-element>");
     },
     changeColor: function(color) {
         this.state.color = color;
