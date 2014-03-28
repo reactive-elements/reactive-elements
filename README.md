@@ -1,4 +1,4 @@
-![Reactive Elements](http://pixelscommander.com/polygon/reactag/assets/logo-reactive-elements-small.png "Reactive Elements")
+![Reactive Elements](http://pixelscommander.com/polygon/reactag/assets/logo-reactive-elements.png "Reactive Elements")
 
 Use React.js components as native HTML elements
 ===============================================
