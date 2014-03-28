@@ -30,8 +30,10 @@
     </script>
 </head>
 <body>
+<div class="wrapper">
     <div>
         <img src="../assets/logo-reactive-elements-small.png"></img>
+        <h1>React.js components as custom HTML elements</h1>
         <ul>
             <li>
                 <button onclick="changePropertiesDirectly()">Change component properties directly and force update</button>
@@ -61,8 +63,8 @@
         }
 
         /*function changeAttribute2() {
-            document.getElementById('carusel').setAttribute('items', '{window.browsers}');
-        }*/
+         document.getElementById('carusel').setAttribute('items', '{window.browsers}');
+         }*/
 
         function changePropertiesDirectly() {
             var carusel = document.getElementById('carusel');
@@ -90,5 +92,6 @@
     <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4ea2f9164143bcfb"></script>
     <!-- AddThis Button END -->
+</div>
 </body>
 </html>
