@@ -1,7 +1,7 @@
-![Reactive Elements](http://pixelscommander.com/polygon/reactag/assets/logo-reactive-elements.png "Reactive Elements")
+![Reactive Elements](http://pixelscommander.com/polygon/reactag/assets/logo-reactive-elements-small.png "Reactive Elements")
 
-React.js + X-Tag
-=================
+Use React.js components as native HTML elements
+===============================================
 
 Lightweight X-Tag add-on which allows to use React.js components as custom HTML elements.
 
