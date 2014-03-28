@@ -43,21 +43,40 @@
     }
 
     w.xtag.registerReact = function (elementName, reactClass) {
-        var element = {};
+        var reactiveElement = this.reactiveElement = {};
 
         w.xtag.register(elementName, {
             extends: 'div',
-            prototype: reactClass.prototype,
             lifecycle: {
                 created: function () {
-                    element = new reactClass(getPropertiesFromAttributes(this.attributes));
-                    extend(this, element);
-                    React.renderComponent(element, this);
+                    reactiveElement = new reactClass(getPropertiesFromAttributes(this.attributes));
+                    extend(this, reactiveElement);
+                    getterSetter(this, 'props', function(){ return reactiveElement.props; }, function(value){ reactiveElement.props = value; })
+                    React.renderComponent(reactiveElement, this);
                 },
-                attributeChanged: function (a, b, c) {
-
+                attributeChanged: function () {
+                    reactiveElement.props = getPropertiesFromAttributes(this.attributes);
+                    reactiveElement.forceUpdate();
                 }
             }
         })
     };
 })(window)
+
+function getterSetter(variableParent, variableName, getterFunction, setterFunction){
+    if (Object.defineProperty)
+    {
+        Object.defineProperty(variableParent, variableName, {
+            get: getterFunction,
+            set: setterFunction
+        });
+    }
+    else if (document.__defineGetter__)
+    {
+        variableParent.__defineGetter__(variableName, getterFunction);
+        variableParent.__defineSetter__(variableName, setterFunction);
+    }
+
+    variableParent["get" + variableName] = getterFunction;
+    variableParent["set" + variableName] = setterFunction;
+}

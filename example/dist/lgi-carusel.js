@@ -16,8 +16,8 @@ window.LGI.Carusel = React.createClass({displayName: 'Carusel',
 
         return React.DOM.ul( {style:this.state}, rows)
     },
-    changeColor: function() {
-        this.state.color = 'red';
+    changeColor: function(color) {
+        this.state.color = color;
         this.forceUpdate();
     }
 });
