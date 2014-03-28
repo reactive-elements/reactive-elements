@@ -2,8 +2,22 @@
 window.LGI = {};
 
 window.LGI.Carusel = React.createClass({
+    getInitialState: function() {
+        return {
+            color: '#ffffff'
+        };
+    },
     render: function() {
-        return <ul><li>React test</li></ul>;
+        var rows = [];
+        this.props.items.forEach(function(item) {
+            rows.push(<li key={item.text}>{item.text}</li>);
+        });
+
+        return <ul style={this.state}>{rows}</ul>
+    },
+    changeColor: function(color) {
+        this.state.color = color;
+        this.forceUpdate();
     }
 });
 

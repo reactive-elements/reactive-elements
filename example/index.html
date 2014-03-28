@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>React.js as X-Tag components demo</title>
-    <script src="./components/x-tag-core/dist/x-tag-core.js"></script>
-    <script src="./components/react/react.min.js"></script>
-    <script src="../src/react-xtag.js"></script>
+    <title>React.js components as HTML custom elements</title>
+    <link rel="stylesheet" href="./css/style.css"></link>
+    <script src="./components/x-tag-core/dist/x-tag-core.js "></script>
+    <script src="./components/react/react.js"></script>
+    <script src="../src/reactive-elements.js"></script>
     <script src="./dist/lgi-carusel.js"></script>
+    <script>
+        window.LGI.networks = [
+            {'text': 'First network'},
+            {'text': 'Second network'},
+            {'text': 'Third network'}
+        ];
+
+        window.justNames = [
+            {'text': 'Denis'},
+            {'text': 'Natasha'},
+            {'text': 'Alisa'}
+        ];
+    </script>
 </head>
 <body>
-    <lgi-carusel></lgi-carusel>
+    <div>
+        <ul>
+            <li>
+                <button onclick="changePropertiesDirectly()">Change component properties directly</button>
+            </li>
+            <li>
+                <button onclick="callToReactComponentMethod()">Execute React component method</button>
+            </li>
+            <li>
+                <button onclick="changeAttribute()">Change component attributes</button>
+            </li>
+        </ul>
+    </div>
+    <lgi-carusel id="carusel" class="left_top_widget" items="{window.LGI.networks}"></lgi-carusel>
+    <script>
+        function callToReactComponentMethod() {
+            document.getElementById('carusel').changeColor('red');
+        }
+
+        function changeAttribute() {
+            document.getElementById('carusel').setAttribute('items', '{window.justNames}');
+        }
+
+        function changePropertiesDirectly() {
+            var carusel = document.getElementById('carusel');
+            carusel.props.items = window.justNames;
+            carusel.forceUpdate();
+        }
+    </script>
 </body>
 </html>
