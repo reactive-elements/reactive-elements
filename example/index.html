@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./css/style.css"></link>
     <script src="./components/x-tag-core/dist/x-tag-core.js "></script>
     <script src="./components/react/react.js"></script>
-    <script src="../src/reactive-elements.js"></script>
+    <script src="../src/reactive-element.js"></script>
     <script src="./dist/lgi-carusel.js"></script>
     <script>
         window.LGI.networks = [
@@ -39,6 +39,9 @@
             <li>
                 <button onclick="changeAttribute()">Change component attributes</button>
             </li>
+            <li>
+                <button onclick="addReactiveElement()">Add component with document.createElement</button>
+            </li>
         </ul>
     </div>
     <lgi-carusel id="carusel" class="left_top_widget" items="{window.LGI.networks}"></lgi-carusel>
@@ -54,6 +57,14 @@
         function changePropertiesDirectly() {
             var carusel = document.getElementById('carusel');
             carusel.props.items = window.justNames;
+            carusel.forceUpdate();
+        }
+
+        function addReactiveElement() {
+            var carusel = document.createElement('lgi-carusel');
+            carusel.className = 'right_top_widget';
+            carusel.props.items = window.LGI.networks;
+            document.body.appendChild(carusel);
             carusel.forceUpdate();
         }
     </script>

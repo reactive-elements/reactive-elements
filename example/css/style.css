@@ -24,8 +24,15 @@ lgi-carusel>ul {
     margin: 0;
 }
 
-.left_top_widget {
+.left_top_widget, .right_top_widget {
     position: absolute;
+    top: 150px;
+}
+
+.left_top_widget {
     left: 100px;
-    top: 100px;
+}
+
+.right_top_widget {
+    right: 100px;
 }

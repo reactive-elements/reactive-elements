@@ -10,6 +10,11 @@ window.LGI.Carusel = React.createClass({displayName: 'Carusel',
     },
     render: function() {
         var rows = [];
+
+        if (this.props.items === undefined) {
+            return React.DOM.div(null);
+        }
+
         this.props.items.forEach(function(item) {
             rows.push(React.DOM.li( {key:item.text}, item.text));
         });

@@ -1,12 +1,6 @@
 (function (w) {
     if (w.xtag === undefined) return;
 
-    var propertiesMapping = {
-        'class': 'className',
-        'onclick': 'onClick',
-        'onmousedown': 'onMouseDown'
-    };
-
     var extend = function (extandable, extending) {
         for (var i in extending) {
             if (extandable[i] === undefined) {
@@ -43,23 +37,24 @@
     }
 
     w.xtag.registerReact = function (elementName, reactClass) {
-        var reactiveElement = this.reactiveElement = {};
-
-        w.xtag.register(elementName, {
-            extends: 'div',
-            lifecycle: {
-                created: function () {
-                    reactiveElement = new reactClass(getPropertiesFromAttributes(this.attributes));
-                    extend(this, reactiveElement);
-                    getterSetter(this, 'props', function(){ return reactiveElement.props; }, function(value){ reactiveElement.props = value; })
-                    React.renderComponent(reactiveElement, this);
-                },
-                attributeChanged: function () {
-                    reactiveElement.props = getPropertiesFromAttributes(this.attributes);
-                    reactiveElement.forceUpdate();
+        (function(){
+            w.xtag.register(elementName, {
+                extends: 'div',
+                lifecycle: {
+                    created: function () {
+                        this.reactiveElement = {};
+                        this.reactiveElement = new reactClass(getPropertiesFromAttributes(this.attributes));
+                        extend(this, this.reactiveElement);
+                        getterSetter(this, 'props', function(){ return this.reactiveElement.props; }, function(value){ this.reactiveElement.props = value; })
+                        React.renderComponent(this.reactiveElement, this);
+                    },
+                    attributeChanged: function () {
+                        this.reactiveElement.props = getPropertiesFromAttributes(this.attributes);
+                        this.reactiveElement.forceUpdate();
+                    }
                 }
-            }
-        })
+            })
+        })();
     };
 })(window)
 

@@ -9,6 +9,11 @@ window.LGI.Carusel = React.createClass({
     },
     render: function() {
         var rows = [];
+
+        if (this.props.items === undefined) {
+            return <div></div>;
+        }
+
         this.props.items.forEach(function(item) {
             rows.push(<li key={item.text}>{item.text}</li>);
         });
