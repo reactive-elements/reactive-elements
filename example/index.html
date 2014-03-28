@@ -19,6 +19,12 @@
             {'text': 'Natasha'},
             {'text': 'Alisa'}
         ];
+
+        window.justBirds = [
+            {'text': 'Raven'},
+            {'text': 'Dove'},
+            {'text': 'Colibri'}
+        ];
     </script>
 </head>
 <body>
@@ -42,7 +48,7 @@
         }
 
         function changeAttribute() {
-            document.getElementById('carusel').setAttribute('items', '{window.justNames}');
+            document.getElementById('carusel').setAttribute('items', '{window.justBirds}');
         }
 
         function changePropertiesDirectly() {
