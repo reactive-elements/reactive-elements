@@ -29,8 +29,8 @@ Lightweight Mozilla X-Tag add-on which allows to use React.js components as cust
 **Find complete example in corresponding folder**
 	
 ##Dependencies
-- React.js
-- X-Tag core
+- [React.js](https://github.com/facebook/react)
+- [X-Tag core](https://github.com/x-tag/core)
 
 
 ##License
