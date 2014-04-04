@@ -12,7 +12,7 @@ Lightweight Mozilla X-Tag add-on which allows to use React.js components as cust
 **Using component in HTML**
 
 	<body>
-		<my-react-component items={window.someArray}></my-react-component>
+		<my-react-component items="{window.someArray}"></my-react-component>
 	</body>
 
 **React component definition**
