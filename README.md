@@ -1,4 +1,6 @@
-![Reactive Elements](http://pixelscommander.com/polygon/reactive-elements/assets/logo-reactive-elements-small.png "Reactive Elements")
+<a href="http://pixelscommander.com/polygon/reactive-elements/example/#.U0LMA62Sy7o">
+    <img alt="Reactive Elements" src="http://pixelscommander.com/polygon/reactive-elements/assets/logo-reactive-elements-small.png"/>
+</a>
 
 React.js components as native HTML elements
 ===========================================
