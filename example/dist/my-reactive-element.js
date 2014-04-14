@@ -27,4 +27,4 @@ window.LGI.Carusel = React.createClass({displayName: 'Carusel',
     }
 });
 
-xtag.registerReact('my-reactive-element', window.LGI.Carusel);
+document.registerReact('my-reactive-element', window.LGI.Carusel);

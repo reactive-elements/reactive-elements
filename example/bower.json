@@ -1,13 +1,14 @@
 {
-  "name": "Polymer",
+  "name": "ReactiveElementsExample",
   "version": "0.0.0",
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
+    "bower_components"
   ],
   "dependencies": {
     "react": "~0.10.0",
-    "x-tag-core": "~0.9.4"
+    "x-tag-core": "~0.9.4",
+    "CustomElements": "~0.2.1"
   }
 }
