@@ -8,6 +8,8 @@ window.LGI.Carusel = React.createClass({
         };
     },
     render: function() {
+        console.log(this.props.caseSensitivePropertyName);
+
         var rows = [];
 
         if (this.props.items === undefined) {

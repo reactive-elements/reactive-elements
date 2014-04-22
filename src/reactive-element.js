@@ -1,5 +1,7 @@
 (function (w) {
 
+    var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
+
     var registrationFunction = (document.registerElement || document.register).bind(document);
 
     if (registrationFunction === undefined) {
@@ -47,18 +49,44 @@
                 }
             }
         }
-    }
+    };
 
     var getPropertiesFromAttributes = function (attributes) {
         var result = {};
 
         for (var i = 0; i < attributes.length; i++) {
             var attribute = attributes[i];
-
-            result[attribute.name] = parseAttributeValue(attributes[i].value);
+            var propertyName = attributeNameToPropertyName(attribute.name);
+            result[propertyName] = parseAttributeValue(attributes[i].value);
         }
+
         return result;
     };
+
+    var attributeNameToPropertyName = function (attributeName) {
+        var result = attributeName.replace('x-', '').replace('data-', '');
+        var delimiterIndex = -1;
+
+        while ((delimiterIndex = getNextDelimiterIndex(result)) !== -1) {
+            result = result.slice(0, delimiterIndex) + result.charAt(delimiterIndex + 1).toUpperCase() + result.slice(delimiterIndex + 2, result.length);
+        }
+
+        return result;
+    };
+
+    var getNextDelimiterIndex = function (string) {
+        var result = -1;
+
+        for (var i = 0; i < PROPERTY_DELIMITER_CHARACTERS.length; i++) {
+            var char = PROPERTY_DELIMITER_CHARACTERS[i];
+            result = string.indexOf(char);
+            if (result !== -1) {
+                break;
+            }
+        }
+
+        return result;
+    }
 
     var parseAttributeValue = function (value) {
         var regexp = /\{.*?\}/g;
@@ -69,7 +97,7 @@
         }
 
         return value;
-    }
+    };
 
     var getterSetter = function (variableParent, variableName, getterFunction, setterFunction) {
         if (Object.defineProperty) {
@@ -85,7 +113,7 @@
 
         variableParent["get" + variableName] = getterFunction;
         variableParent["set" + variableName] = setterFunction;
-    }
+    };
 })(window);
 
 //Mozilla bind polyfill

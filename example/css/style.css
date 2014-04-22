@@ -16,7 +16,7 @@ body, html {
     margin: 5% 0 5% 5%;
 }
 
-button {
+li a, button {
     border: 0;
     line-height: 17px;
     font-size: 18px;
@@ -29,7 +29,7 @@ button {
     letter-spacing: 0.05em;
 }
 
-img, h1 {
+img, h1, .header {
     margin: 0 0 5% 0;
 }
 
@@ -38,13 +38,16 @@ h1 {
     font-weight: lighter;
     font-variant: normal;
     font-size: 48px;
+}
+
+.header {
     padding: 50px;
     background-color: #ecf0f1;
     border-radius: 20px;
     color: #7f8c8d;
 }
 
-button:active {
+li a:active, button:active {
     opacity: 0.75;
 }
 
