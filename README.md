@@ -5,7 +5,7 @@
 React.js components as native HTML elements
 ===========================================
 
-Tiny Google Polymer or Mozilla X-Tag add-on which allows to use React.js components as custom HTML elements. It will also work with native custom element implementation if present.
+Tiny Google Polymer or Mozilla X-Tag add-on which allows to use React.js components as custom HTML elements. Also works with native custom elements implementation if present.
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
 
