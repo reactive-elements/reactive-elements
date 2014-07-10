@@ -23,10 +23,11 @@ Tiny Google [Polymer](http://polymer-project.org) or Mozilla [X-Tags](http://www
 	MyComponent = React.createClass({
 	    render: function() {
 	    	console.log(this.props.items);
+        console.log(this.props._content); // original tag contents in a <content>
 	        return <ul><li>React content</li></ul>;
 	    }
 	});
-	
+
     document.registerReact('my-react-component', MyComponent);
 
 **Find complete examples in corresponding folder.**

@@ -11,8 +11,9 @@
     var registerReact = function (elementName, reactClass) {
         var elementPrototype = Object.create(HTMLElement.prototype);
         elementPrototype.createdCallback = function () {
+            this._content = getContentNodes(this);
             this.reactiveElement = {};
-            this.reactiveElement = new reactClass(getPropertiesFromAttributes(this.attributes));
+            this.reactiveElement = new reactClass(getAllProperties(this, this.attributes));
             extend(this, this.reactiveElement);
             getterSetter(this, 'props', function () {
                 return this.reactiveElement.props;
@@ -23,7 +24,7 @@
         };
 
         elementPrototype.attributeChangedCallback = function () {
-            this.reactiveElement.props = getPropertiesFromAttributes(this.attributes);
+            this.reactiveElement.props = getAllProperties(this, this.attributes);
             this.reactiveElement.forceUpdate();
         }
 
@@ -51,16 +52,25 @@
         }
     };
 
-    var getPropertiesFromAttributes = function (attributes) {
-        var result = {};
+    var getContentNodes = function (el) {
+      var fragment = document.createElement('content');
+      while(el.childNodes.length) {
+        fragment.appendChild(el.childNodes[0]);
+      }
+      return fragment;
+    };
 
-        for (var i = 0; i < attributes.length; i++) {
-            var attribute = attributes[i];
-            var propertyName = attributeNameToPropertyName(attribute.name);
-            result[propertyName] = parseAttributeValue(attributes[i].value);
-        }
+    var getAllProperties = function (el, attributes) {
+      var result = {};
 
-        return result;
+      for (var i = 0; i < attributes.length; i++) {
+          var attribute = attributes[i];
+          var propertyName = attributeNameToPropertyName(attribute.name);
+          result[propertyName] = parseAttributeValue(attributes[i].value);
+      }
+
+      result._content = el._content;
+      return result;
     };
 
     var attributeNameToPropertyName = function (attributeName) {
