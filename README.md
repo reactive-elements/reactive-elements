@@ -9,34 +9,41 @@ Tiny Google [Polymer](http://polymer-project.org) or Mozilla [X-Tags](http://www
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
 
-##Example
+Example
+-------
 
 **Using component in HTML**
 
-	<body>
-		<my-react-component items="{window.someArray}"></my-react-component>
-	</body>
+```html
+<body>
+	<my-react-component items="{window.someArray}"></my-react-component>
+</body>
+```
 
 **React component definition**
+```jsx
+/* @jsx React.DOM */
+MyComponent = React.createClass({
+  render: function() {
+    console.log(this.props.items);
+    console.log(this.props._content); // original tag contents in a <content>
+    return <ul><li>React content</li></ul>;
+  }
+});
 
-	/* @jsx React.DOM */
-	MyComponent = React.createClass({
-	    render: function() {
-	    	console.log(this.props.items);
-	        return <ul><li>React content</li></ul>;
-	    }
-	});
-	
-    document.registerReact('my-react-component', MyComponent);
+document.registerReact('my-react-component', MyComponent);
+```
 
 **Find complete examples in corresponding folder.**
 
-##Dependencies
+Dependencies
+------------
 
 - [React.js](https://github.com/facebook/react)
 - [X-Tag core](https://github.com/x-tag/core) or [Polymer custom elements](https://github.com/Polymer/CustomElements) or native browser support for custom elements.
 
-##License
+License
+-------
 
 MIT: http://mit-license.org/
 
