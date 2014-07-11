@@ -34,9 +34,19 @@ MyComponent = React.createClass({
 document.registerReact('my-react-component', MyComponent);
 ```
 
-Content of custom element is injected to component as **this.props._content**.
-
 **Find complete examples in corresponding folder.**
+
+Nesting
+-------
+
+Content of custom element is injected to component as ```this.props._content```.
+
+```
+<my-react-component">Hello world</my-react-component>
+```
+
+In this case props._content is equal "Hello world".
+
 
 Dependencies
 ------------
