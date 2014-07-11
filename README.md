@@ -34,7 +34,7 @@ MyComponent = React.createClass({
 document.registerReact('my-react-component', MyComponent);
 ```
 
-Content of custom element is injected to component as **this.props._content**. Feel free to use it in reactive element render function.
+Content of custom element is injected to component as **this.props._content**.
 
 **Find complete examples in corresponding folder.**
 
