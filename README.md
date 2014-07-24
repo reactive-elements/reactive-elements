@@ -21,7 +21,7 @@ Example
 ```
 
 **React component definition**
-```jsx
+```js
 /* @jsx React.DOM */
 MyComponent = React.createClass({
   render: function() {
@@ -41,8 +41,8 @@ Nesting
 
 Content of custom element is injected to component as ```this.props._content```.
 
-```
-<my-react-component">Hello world</my-react-component>
+```html
+<my-react-component>Hello world</my-react-component>
 ```
 
 In this case props._content is equal "Hello world".
