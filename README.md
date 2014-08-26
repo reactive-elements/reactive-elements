@@ -39,13 +39,13 @@ document.registerReact('my-react-component', MyComponent);
 Nesting
 -------
 
-Content of custom element is injected to component as ```this.props._content```.
+Original content of a custom element is injected to component as ```this.props._content```.
 
 ```html
 <my-react-component>Hello world</my-react-component>
 ```
 
-In this case props._content is equal "Hello world".
+In this case props._content is equal to "Hello world".
 
 
 Dependencies
