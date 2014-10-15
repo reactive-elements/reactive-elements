@@ -9,6 +9,8 @@ Tiny Google [Polymer](http://polymer-project.org) or Mozilla [X-Tags](http://www
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
 
+*UPD* Convert Angular and Backbone views as well with [MVC elements project](https://github.com/MVC-Elements)
+
 Example
 -------
 
