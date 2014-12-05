@@ -49,6 +49,10 @@ Original content of a custom element is injected to component as ```this.props._
 
 In this case props._content is equal to "Hello world".
 
+NPM and Bower
+------------------------------------------
+NPM: reactive-elements
+Bower: ReactiveElements
 
 Dependencies
 ------------
@@ -64,11 +68,3 @@ MIT: http://mit-license.org/
 Copyright 2014 Denis Radin aka [PixelsCommander](http://pixelscommander.com)
 
 Inspired by Christopher Chedeau`s [react-xtags](http://github.com/vjeux/react-xtags/)
-
-Bower package
--------------
-ReactiveElements
-
-NPM package
------------
-reactive-elements
