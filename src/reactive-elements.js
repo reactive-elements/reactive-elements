@@ -20,7 +20,9 @@
             }, function (value) {
                 this.reactiveElement.props = value;
             });
-            React.renderComponent(this.reactiveElement, this);
+
+            //Since React v0.12 API was changed, so need a check for current API
+            React.render ? React.render(this.reactiveElement, this) : React.renderComponent(this.reactiveElement, this);
         };
 
         elementPrototype.attributeChangedCallback = function () {
