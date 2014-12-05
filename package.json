@@ -1,16 +1,31 @@
 {
-  "name": "React2Polymer",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "BSD-2-Clause",
-  "devDependencies": {
-    "gulp": "~3.8.5",
-    "gulp-react": "~0.4.0",
-    "gulp-uglify": "~0.3.1"
-  }
+    "name": "reactive-elements",
+    "version": "0.4.0",
+    "description": "Allows to use React.js component as custom element",
+    "main": "dist/reactive-elements.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "homepage": "https://github.com/PixelsCommander/ReactiveElements",
+    "keywords": [
+        "react",
+        "web-components",
+        "custom elements",
+        "reactjs"
+    ],
+    "author": {
+        "name" : "Denis Radin aka PixelsCommander",
+        "email" : "denis.radin@gmail.com",
+        "url" : "http://pixelscommander.com/"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PixelsCommander/ReactiveElements/issues",
+        "email": "denis.radin@gmail.com"
+    },
+    "devDependencies": {
+        "gulp": "~3.8.5",
+        "gulp-react": "~0.4.0",
+        "gulp-uglify": "~0.3.1"
+    }
 }
