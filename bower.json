@@ -1,27 +1,30 @@
 {
-  "name": "ReactiveElements",
-  "version": "0.4.0",
-  "homepage": "https://github.com/PixelsCommander/ReactiveElements",
-  "authors": [
-    "PixelsCommander <denis.radin@gmail.com>"
-  ],
-  "description": "Use React.js components as HTML custom elements",
-  "main": "./dist/reactive-elements.js",
-  "moduleType": [
-    "globals"
-  ],
-  "keywords": [
-    "react",
-    "web-components",
-    "custom",
-    "elements"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+    "name": "ReactiveElements",
+    "version": "0.4.0",
+    "homepage": "https://github.com/PixelsCommander/ReactiveElements",
+    "authors": [
+        "Denis Radin <denis.radin@gmail.com>",
+        "Addy Osmani <addyosmani@gmail.com>",
+        "Jakob Heuser <http://www.felocity.com>",
+        "Gustavo Salomé Silva <gustavonips@gmail.com>"
+    ],
+    "description": "Use React.js components as HTML custom elements",
+    "main": "./dist/reactive-elements.js",
+    "moduleType": [
+        "globals"
+    ],
+    "keywords": [
+        "react",
+        "web-components",
+        "custom",
+        "elements"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
 }
