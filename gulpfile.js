@@ -7,7 +7,7 @@ gulp.task('default', function() {
         .pipe(uglify())
         .pipe(gulp.dest('dist'));
 
-    gulp.src('example/jsx/*.jsx')
+    gulp.src('demo/jsx/*.jsx')
         .pipe(react())
-        .pipe(gulp.dest('example/dist'));
+        .pipe(gulp.dest('demo/dist'));
 });
