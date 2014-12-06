@@ -10,10 +10,11 @@
 
     var registerReact = function (elementName, reactClass) {
         var elementPrototype = Object.create(HTMLElement.prototype);
+        var elementFactory = React.createFactory(reactClass);
+
         elementPrototype.createdCallback = function () {
             this._content = getContentNodes(this);
-            this.reactiveElement = {};
-            this.reactiveElement = new reactClass(getAllProperties(this, this.attributes));
+            this.reactiveElement = elementFactory(reactClass, getAllProperties(this, this.attributes));
             extend(this, this.reactiveElement);
             getterSetter(this, 'props', function () {
                 return this.reactiveElement.props;
