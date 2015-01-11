@@ -10,22 +10,21 @@
 
     var registerReact = function (elementName, reactClass) {
         var elementPrototype = Object.create(HTMLElement.prototype);
-        var elementFactory = React.createFactory(reactClass);
 
         elementPrototype.createdCallback = function () {
             this._content = getContentNodes(this);
-            this.reactiveElement = elementFactory(reactClass, getAllProperties(this, this.attributes));
+            var reactElement = React.createElement(reactClass, getAllProperties(this, this.attributes));
+
+            //Since React v0.12 API was changed, so need a check for current API
+            this.reactiveElement = React.render(reactElement, this);
 
             extend(this, this.reactiveElement);
 
             getterSetter(this, 'props', function () {
                 return this.reactiveElement.props;
             }, function (value) {
-                this.reactiveElement.props = value;
+                this.reactiveElement.setProps(value);
             });
-
-            //Since React v0.12 API was changed, so need a check for current API
-            React.render ? React.render(this.reactiveElement, this) : React.renderComponent(this.reactiveElement, this);
         };
 
         elementPrototype.attributeChangedCallback = function () {
