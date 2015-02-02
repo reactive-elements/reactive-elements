@@ -8,12 +8,16 @@ body, html {
     background-color: #ffffff;
     color: #000000;
     display: block;
+    text-align: center;
 }
 
 #wrapper {
-    max-width: 70%;
-    width: 90%;
+    max-width: 1000px;
+    width: 100%;
+    /*width: 90%;*/
     margin: 5% 0 5% 5%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 li a, button {
@@ -41,10 +45,12 @@ h1 {
 }
 
 .header {
-    padding: 50px;
+    /* padding: 50px;
     background-color: #ecf0f1;
-    border-radius: 20px;
+    border-radius: 20px; */
     color: #7f8c8d;
+    padding-left: 30px;
+    padding-right: 30px
 }
 
 li a:active, button:active {
@@ -53,12 +59,12 @@ li a:active, button:active {
 
 ul {
     list-style: none;
-    margin: 0;
+    margin: 3px;
     padding: 0;
 }
 
 li {
-    margin: 0;
+    margin: 3px;
 }
 
 #wrapper > ul > li {
@@ -78,5 +84,9 @@ my-reactive-element {
 
 my-reactive-element ul {
     padding: 0;
-    margin: 0 0 0 30px;
+    margin: 0 0 0 0;
+}
+
+.addthis_toolbox a {
+	float: none !important;
 }
