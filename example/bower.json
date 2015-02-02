@@ -7,8 +7,8 @@
     "bower_components"
   ],
   "dependencies": {
-    "react": "~0.10.0",
-    "x-tag-core": "~0.9.4",
-    "CustomElements": "~0.2.1"
+    "react": null,
+    "x-tag-core": null,
+    "CustomElements": null
   }
 }
