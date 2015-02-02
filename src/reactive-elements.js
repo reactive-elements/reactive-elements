@@ -1,5 +1,9 @@
 (function (w) {
 
+    if (w.require) {
+        React = require('react');
+    }
+
     var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
 
     var registrationFunction = (document.registerElement || document.register).bind(document);
@@ -131,6 +135,8 @@
         variableParent["get" + variableName] = getterFunction;
         variableParent["set" + variableName] = setterFunction;
     };
+
+    module.exports = registerReact;
 })(window);
 
 //Mozilla bind polyfill
