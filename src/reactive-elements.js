@@ -1,5 +1,9 @@
 (function (w) {
 
+    if (w.require) {
+        React = require('react');
+    }
+
     var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
 
     var registrationFunction = (document.registerElement || document.register).bind(document);
@@ -27,9 +31,12 @@
             });
         };
 
-        elementPrototype.attributeChangedCallback = function () {
+        elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {
             this.reactiveElement.props = getAllProperties(this, this.attributes);
             this.reactiveElement.forceUpdate();
+            if (this.reactiveElement.attributeChanged !== undefined) {
+                this.reactiveElement.attributeChanged.bind(this)(name, oldValue, newValue);
+            }
         }
 
         registrationFunction(elementName, {
@@ -128,6 +135,8 @@
         variableParent["get" + variableName] = getterFunction;
         variableParent["set" + variableName] = setterFunction;
     };
+
+    module.exports = registerReact;
 })(window);
 
 //Mozilla bind polyfill

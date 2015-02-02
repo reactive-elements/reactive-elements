@@ -7,6 +7,9 @@ window.LGI.Carusel = React.createClass({
             color: '#000000'
         };
     },
+    attributeChanged: function(name, oldValue, newValue) {
+        console.log('Attribute ' + name + ' was changed from ' + oldValue + ' to ' + newValue);
+    },
     render: function() {
         var rows = [];
 
