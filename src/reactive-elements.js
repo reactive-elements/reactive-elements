@@ -1,5 +1,3 @@
-React = require('react') || React;
-
 (function (w) {
     var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
 
@@ -42,7 +40,6 @@ React = require('react') || React;
     };
 
     document.registerReact = registerReact;
-    module.exports = registerReact;
 
     if (w.xtag !== undefined) {
         w.xtag.registerReact = registerReact;
