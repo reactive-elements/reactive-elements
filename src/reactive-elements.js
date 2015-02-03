@@ -1,9 +1,5 @@
 (function (w) {
 
-    if (w.require) {
-        React = require('react');
-    }
-
     var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
 
     var registrationFunction = (document.registerElement || document.register).bind(document);
