@@ -133,8 +133,6 @@ React = require('react') || React;
         variableParent["get" + variableName] = getterFunction;
         variableParent["set" + variableName] = setterFunction;
     };
-
-    module.exports = registerReact;
 })(window);
 
 //Mozilla bind polyfill
