@@ -1,3 +1,5 @@
+React = typeof React === 'object' ? React : require('react');
+
 (function (w) {
     var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
 
@@ -40,6 +42,9 @@
     };
 
     document.registerReact = registerReact;
+    if (typeof module === 'object' && module.exports) {
+        module.exports = registerReact;
+    }
 
     if (w.xtag !== undefined) {
         w.xtag.registerReact = registerReact;
