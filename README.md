@@ -46,6 +46,17 @@ Original content of a custom element is injected to component as ```this.props._
 
 In this case props._content is equal to "Hello world".
 
+Handling attributes change
+--------------------------
+You may add ```attributeChanged``` callback to component in order to handle / modify / filter incoming values.
+
+```html
+attributeChanged: function(attributeName, oldValue, newValue) {
+    console.log('Attribute ' + attributeName + ' was changed from ' + oldValue + ' to ' + newValue);
+    this.props[attributeName] = parseInt(newValue);
+}
+```
+
 NPM and Bower
 ------------------------------------------
 - NPM: reactive-elements
