@@ -4,7 +4,7 @@
 
 Convert React.js components into Web Components
 ===============================================
-Works with any [custom HTML elements](http://w3c.github.io/webcomponents/spec/custom/) implementation or polyfill present.
+Compatible with any [custom elements](http://w3c.github.io/webcomponents/spec/custom/) implementation or [polyfill](https://github.com/Polymer/CustomElements).
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
 
