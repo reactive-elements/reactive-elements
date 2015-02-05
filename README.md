@@ -2,8 +2,8 @@
     <img alt="Reactive Elements" src="http://pixelscommander.com/polygon/reactive-elements/assets/logo-reactive-elements-small.png"/>
 </a>
 
-React.js components as native HTML elements
-===========================================
+React.js components as native HTML elements (web components)
+============================================================
 Tiny Google [Polymer](http://polymer-project.org) or Mozilla [X-Tags](http://www.x-tags.org/) add-on which allows to use [React.js](http://facebook.github.io/react/) components as [custom HTML elements](http://w3c.github.io/webcomponents/spec/custom/). Also works with a native Custom Elements implementation if present.
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
