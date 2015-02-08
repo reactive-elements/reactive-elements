@@ -110,11 +110,12 @@ React = typeof React === 'object' ? React : require('react');
     }
 
     var parseAttributeValue = function (value) {
-        var regexp = /\{.*?\}/g;
+        var regexp = /^\{.*?\}$/;
         var matches = value.match(regexp);
 
         if (matches !== null && matches !== undefined && matches.length > 0) {
-            value = eval(matches[0].replace('{', '').replace('}', ''));
+            //drop leading/trailing braces
+            value = JSON.parse(matches[0].slice(1, matches[0].length - 1));
         }
 
         return value;
