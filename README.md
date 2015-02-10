@@ -34,7 +34,7 @@ MyComponent = React.createClass({
 document.registerReact('my-react-component', MyComponent);
 ```
 
-**Find complete examples in corresponding folder.**
+**Find demo in corresponding folder.**
 
 Nesting
 -------
