@@ -107,11 +107,22 @@ React = typeof React === 'object' ? React : require('react');
         }
 
         return result;
-    }
+    };
 
     var parseAttributeValue = function (value) {
-        var regexp = /\{.*?\}/g;
-        var matches = value.match(regexp);
+        // Testing for json string first
+        var matches = value.match(/^\{((?:\{|\[)(?:.|[\r\n])*(?:\}|\]))}$/), result;
+
+        if(matches && matches.length > 0) {
+            try {
+                result = JSON.parse(matches[ 1 ]);
+                return result;
+            } catch (e) {
+                //Silently continuing
+            }
+        }
+
+        matches = value.match(/\{.*?\}/g);
 
         if (matches !== null && matches !== undefined && matches.length > 0) {
             value = eval(matches[0].replace('{', '').replace('}', ''));
