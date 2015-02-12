@@ -12,10 +12,17 @@ describe("utils", function() {
         expect(window.ReactiveElements.utils.parseAttributeValue('{window.items}')).toEqual(window.items);
     });
 
-    it("should convert JSON literal string to JSON object", function(){
+    it("should convert JSON object literal string to JSON object", function(){
         var jsonSerialized = "{{\"status\": \"active\", \"language\": \"javascript\"}}",
             jsonDeserialized = window.ReactiveElements.utils.parseAttributeValue(jsonSerialized);
         expect(jsonDeserialized.status).toEqual('active');
         expect(jsonDeserialized.language).toEqual('javascript');
+    });
+
+    it("should convert JSON array literal string to JSON object", function(){
+        var jsonSerialized = "{[\"language\", \"javascript\"]}",
+            jsonDeserialized = window.ReactiveElements.utils.parseAttributeValue(jsonSerialized);
+        expect(jsonDeserialized[0]).toEqual('language');
+        expect(jsonDeserialized[1]).toEqual('javascript');
     });
 });

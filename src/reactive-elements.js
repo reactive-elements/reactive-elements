@@ -95,13 +95,13 @@ React = typeof React === 'object' ? React : require('react');
         },
         parseAttributeValue: function (value) {
             var pointerRegexp = /\{.*?\}/g,
-                jsonRegexp = /\{{.*?\}}/g;
+                jsonRegexp = /\{{.*?\}}/g,
+                jsonArrayRegexp = /\{{.*?\}}/g;
 
             var pointerMatches = value.match(pointerRegexp),
-                jsonMatches = value.match(jsonRegexp);
+                jsonMatches = value.match(jsonRegexp) || value.match(jsonArrayRegexp);
 
             if (jsonMatches && jsonMatches.length > 0) {
-                //If
                 jsonMatches[0] = jsonMatches[0].substring(1, jsonMatches[0].length - 1).replace(/'/g, '"');
                 value = JSON.parse(jsonMatches[0]);
             } else if (pointerMatches && pointerMatches.length > 0) {
