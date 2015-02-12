@@ -61,7 +61,7 @@
         <button onclick="window.location.href = 'http://pixelscommander.com/polygon/reactbb/react/tests/broadcasts-list.html';">TV Schedule custom element demo</button>
         </li>
     </ul>
-    <my-reactive-element id="carusel" class="left_top_widget" case-sensitive-property-name="Some value from camel case named variable" items="{window.browsers}"></my-reactive-element>
+    <my-reactive-element id="carusel" class="left_top_widget" case-sensitive-property-name="Some value from camel case named variable" json-property="{{'status': 'active', 'language': 'javascript'}}" items="{window.browsers}"></my-reactive-element>
     <script>
         function callToReactComponentMethod() {
             document.getElementById('carusel').changeColor('red');

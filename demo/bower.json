@@ -9,6 +9,7 @@
   "dependencies": {
     "react": null,
     "x-tag-core": null,
-    "CustomElements": null
+    "CustomElements": null,
+    "bind-polyfill": "~1.0.0"
   }
 }

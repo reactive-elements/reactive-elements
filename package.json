@@ -1,51 +1,57 @@
 {
-    "name": "reactive-elements",
-    "version": "0.4.6",
-    "description": "Allows to use React.js component as custom element",
-    "main": "dist/reactive-elements.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "reactive-elements",
+  "version": "0.4.7",
+  "description": "Allows to use React.js component as custom element",
+  "main": "dist/reactive-elements.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/PixelsCommander/ReactiveElements",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PixelsCommander/ReactiveElements.git"
+  },
+  "keywords": [
+    "react",
+    "web-components",
+    "custom elements",
+    "reactjs"
+  ],
+  "author": {
+    "name": "Denis Radin aka PixelsCommander",
+    "email": "denis.radin@gmail.com",
+    "url": "http://pixelscommander.com/"
+  },
+  "contributors": [
+    {
+      "name": "Addy Osmani",
+      "email": "addyosmani@gmail.com",
+      "url": "http://www.addyosmani.com"
     },
-    "homepage": "https://github.com/PixelsCommander/ReactiveElements",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/PixelsCommander/ReactiveElements.git"
+    {
+      "name": "Jakob Heuser",
+      "url": "http://www.felocity.com"
     },
-    "keywords": [
-        "react",
-        "web-components",
-        "custom elements",
-        "reactjs"
-    ],
-    "author": {
-        "name": "Denis Radin aka PixelsCommander",
-        "email": "denis.radin@gmail.com",
-        "url": "http://pixelscommander.com/"
-    },
-    "contributors": [
-        {
-            "name": "Addy Osmani",
-            "email": "addyosmani@gmail.com",
-            "url": "http://www.addyosmani.com"
-        },
-        {
-            "name": "Jakob Heuser",
-            "url": "http://www.felocity.com"
-        },
-        {
-            "name": "Gustavo Salomé Silva",
-            "email": "gustavonips@gmail.com",
-            "url": "https://github.com/gusnips"
-        }
-    ],
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/PixelsCommander/ReactiveElements/issues",
-        "email": "denis.radin@gmail.com"
-    },
-    "devDependencies": {
-        "gulp": "~3.8.5",
-        "gulp-react": "~0.4.0",
-        "gulp-uglify": "~0.3.1"
+    {
+      "name": "Gustavo Salomé Silva",
+      "email": "gustavonips@gmail.com",
+      "url": "https://github.com/gusnips"
     }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PixelsCommander/ReactiveElements/issues",
+    "email": "denis.radin@gmail.com"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.5",
+    "gulp-react": "~0.4.0",
+    "gulp-uglify": "~0.3.1",
+    "karma": "~0.12.31",
+    "gulp-karma": "0.0.4",
+    "jasmine-core": "~2.2.0",
+    "karma-jasmine": "~0.3.5",
+    "karma-chrome-launcher": "~0.1.7",
+    "karma-phantomjs-launcher": "~0.1.4"
+  }
 }
