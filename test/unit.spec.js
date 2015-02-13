@@ -49,7 +49,7 @@ describe("utils", function() {
         });
 
         it("should convert attributes containing 'data-' not as a prefix to React properties", function(){
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute-data')).toEqual('attributeData');
+            expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute-data-test')).toEqual('attributeDataTest');
         });
     });
 });
