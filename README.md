@@ -57,6 +57,20 @@ attributeChanged: function(attributeName, oldValue, newValue) {
 }
 ```
 
+Communicate with DOM events
+---------------------------
+You may trigger DOM event from React component by using following snippet:
+```html
+var event = new CustomEvent('change', {
+      bubbles: true
+    });
+this.getDOMNode().dispatchEvent(event)
+```
+Subscribing to DOM events is similar:
+```html
+this.getDOMNode().addEventListener('change', function(e){...});
+```
+
 NPM and Bower
 ------------------------------------------
 - NPM: reactive-elements
