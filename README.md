@@ -57,7 +57,7 @@ attributeChanged: function(attributeName, oldValue, newValue) {
 }
 ```
 
-Communicate with DOM events
+Communicate via DOM events
 ---------------------------
 You may trigger DOM event from React component by using following snippet:
 ```html
