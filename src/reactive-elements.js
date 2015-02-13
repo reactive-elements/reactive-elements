@@ -71,27 +71,11 @@ React = typeof React === 'object' ? React : require('react');
             return result;
         },
         attributeNameToPropertyName: function (attributeName) {
-            var result = attributeName.replace('x-', '').replace('data-', '');
-            var delimiterIndex = -1;
-
-            while ((delimiterIndex = utils.getNextDelimiterIndex(result)) !== -1) {
-                result = result.slice(0, delimiterIndex) + result.charAt(delimiterIndex + 1).toUpperCase() + result.slice(delimiterIndex + 2, result.length);
-            }
-
-            return result;
-        },
-        getNextDelimiterIndex: function (string) {
-            var result = -1;
-
-            for (var i = 0; i < PROPERTY_DELIMITER_CHARACTERS.length; i++) {
-                var char = PROPERTY_DELIMITER_CHARACTERS[i];
-                result = string.indexOf(char);
-                if (result !== -1) {
-                    break;
-                }
-            }
-
-            return result;
+            return attributeName
+                .replace(/^x\-|^data\-/i, '')
+                .replace(/\W+(.)/g, function(x, chr) {
+                    return chr.toUpperCase();
+                });
         },
         parseAttributeValue: function (value) {
             var pointerRegexp = /\{.*?\}/g,
