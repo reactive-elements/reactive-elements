@@ -1,8 +1,6 @@
 React = typeof React === 'object' ? React : require('react');
 
 (function (w) {
-    var PROPERTY_DELIMITER_CHARACTERS = [':', '-', '_'];
-
     if (document.registerElement || document.register) {
         var registrationFunction = (document.registerElement || document.register).bind(document);
     }
@@ -72,8 +70,8 @@ React = typeof React === 'object' ? React : require('react');
         },
         attributeNameToPropertyName: function (attributeName) {
             return attributeName
-                .replace(/^x\-|^data\-/i, '')
-                .replace(/\W+(.)/g, function(x, chr) {
+                .replace(/^(x|data)[-_:]/i, '')
+                .replace(/[-_:](.)/g, function(x, chr) {
                     return chr.toUpperCase();
                 });
         },

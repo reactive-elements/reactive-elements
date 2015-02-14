@@ -29,27 +29,31 @@ describe("utils", function() {
     });
 
     describe(".attributeNameToPropertyName", function(){
-        it("should convert general attributes to React properties", function(){
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute-test')).toEqual('attributeTest');
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute-test-long')).toEqual('attributeTestLong');
-        });
+        var ATTRIBUTE_NAME_DELIMITERS =  ['-', '_', ':']
 
-        it("should convert attributes prefixed with 'x-' to React properties", function(){
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('x-attribute')).toEqual('attribute');
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('x-attribute-test')).toEqual('attributeTest');
-        });
+        ATTRIBUTE_NAME_DELIMITERS.forEach(function(delimiter) {
+            it("should convert general attributes to React properties", function(){
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute' + delimiter + 'test')).toEqual('attributeTest');
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute' + delimiter + 'test' + delimiter + 'long')).toEqual('attributeTestLong');
+            });
 
-        it("should convert attributes prefixed with 'data-' to React properties", function(){
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('data-attribute')).toEqual('attribute');
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('data-attribute-test')).toEqual('attributeTest');
-        });
+            it("should convert attributes prefixed with 'x" + delimiter + "' to React properties", function(){
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('x' + delimiter + 'attribute')).toEqual('attribute');
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('x' + delimiter + 'attribute' + delimiter + 'test')).toEqual('attributeTest');
+            });
 
-        it("should convert attributes containing 'x-' not as a prefix to React properties", function(){
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('max-attribute')).toEqual('maxAttribute');
-        });
+            it("should convert attributes prefixed with 'data" + delimiter + "' to React properties", function(){
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('data' + delimiter + 'attribute')).toEqual('attribute');
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('data' + delimiter + 'attribute' + delimiter + 'test')).toEqual('attributeTest');
+            });
 
-        it("should convert attributes containing 'data-' not as a prefix to React properties", function(){
-            expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute-data-test')).toEqual('attributeDataTest');
+            it("should convert attributes containing 'x" + delimiter + "' not as a prefix to React properties", function(){
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('max' + delimiter + 'attribute')).toEqual('maxAttribute');
+            });
+
+            it("should convert attributes containing 'data" + delimiter + "' not as a prefix to React properties", function(){
+                expect(window.ReactiveElements.utils.attributeNameToPropertyName('attribute' + delimiter + 'data' + delimiter + 'test')).toEqual('attributeDataTest');
+            });
         });
     });
 });
