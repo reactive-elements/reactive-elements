@@ -1,6 +1,6 @@
 {
   "name": "reactive-elements",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "Allows to use React.js component as custom element",
   "main": "dist/reactive-elements.js",
   "scripts": {
@@ -36,6 +36,10 @@
       "name": "Gustavo Salomé Silva",
       "email": "gustavonips@gmail.com",
       "url": "https://github.com/gusnips"
+    },
+    {
+      "name": "Oliver Schmidt",
+      "url": "https://github.com/codejet"
     }
   ],
   "license": "MIT",

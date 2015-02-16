@@ -1,12 +1,13 @@
 {
     "name": "ReactiveElements",
-    "version": "0.4.8",
+    "version": "0.4.9",
     "homepage": "https://github.com/PixelsCommander/ReactiveElements",
     "authors": [
         "Denis Radin <denis.radin@gmail.com>",
         "Addy Osmani <addyosmani@gmail.com>",
         "Jakob Heuser <http://www.felocity.com>",
-        "Gustavo Salomé Silva <gustavonips@gmail.com>"
+        "Gustavo Salomé Silva <gustavonips@gmail.com>",
+        "Oliver Schmidt <http://github.com/codejet>"
     ],
     "description": "Use React.js components as HTML custom elements",
     "main": "./dist/reactive-elements.js",
