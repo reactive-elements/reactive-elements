@@ -7,7 +7,8 @@
         "Addy Osmani <addyosmani@gmail.com>",
         "Jakob Heuser <http://www.felocity.com>",
         "Gustavo Salomé Silva <gustavonips@gmail.com>",
-        "Oliver Schmidt <http://github.com/codejet>"
+        "Oliver Schmidt <http://github.com/codejet>",
+        "Oleg Slobodskoi <oleg008@gmail.com>"
     ],
     "description": "Use React.js components as HTML custom elements",
     "main": "./dist/reactive-elements.js",
