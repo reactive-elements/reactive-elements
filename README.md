@@ -80,6 +80,7 @@ Dependencies
 ------------
 - [React.js](https://github.com/facebook/react)
 - Custom elements support or [polyfill](https://github.com/Polymer/CustomElements)
+- function.bind and Object.create support or polyfills
 
 License
 -------
