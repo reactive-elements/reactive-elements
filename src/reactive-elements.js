@@ -76,18 +76,17 @@ React = typeof React === 'object' ? React : require('react');
                 });
         },
         parseAttributeValue: function (value) {
-            var pointerRegexp = /\{.*?\}/g,
-                jsonRegexp = /\{{.*?\}}/g,
-                jsonArrayRegexp = /\{{.*?\}}/g;
+            var pointerRegexp = /^{.*?}$/i,
+                jsonRegexp = /^{{2}.*}{2}$/,
+                jsonArrayRegexp = /^{\[.*\]}$/;
 
             var pointerMatches = value.match(pointerRegexp),
                 jsonMatches = value.match(jsonRegexp) || value.match(jsonArrayRegexp);
 
-            if (jsonMatches && jsonMatches.length > 0) {
-                jsonMatches[0] = jsonMatches[0].substring(1, jsonMatches[0].length - 1).replace(/'/g, '"');
-                value = JSON.parse(jsonMatches[0]);
-            } else if (pointerMatches && pointerMatches.length > 0) {
-                value = eval(pointerMatches[0].replace('{', '').replace('}', ''));
+            if (jsonMatches) {
+                value = JSON.parse(jsonMatches[0].replace(/^{|}$/g, '').replace(/'/g, '"'));
+            } else if (pointerMatches) {
+                value = eval(pointerMatches[0].replace(/[{}]/g, ''));
             }
 
             return value;
