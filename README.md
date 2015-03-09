@@ -5,9 +5,6 @@
 Convert React.js components into Web Components
 ===============================================
 
-[![Join the chat at https://gitter.im/PixelsCommander/ReactiveElements](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/PixelsCommander/ReactiveElements?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
 Compatible with any [custom elements](http://w3c.github.io/webcomponents/spec/custom/) implementation or [polyfill](https://github.com/Polymer/CustomElements).
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
