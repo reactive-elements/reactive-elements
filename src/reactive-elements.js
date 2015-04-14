@@ -51,7 +51,7 @@ React = typeof React === 'object' ? React : require('react');
         },
         getContentNodes: function (el) {
             var fragment = document.createElement('content');
-            while(el.childNodes.length) {
+            while (el.childNodes.length) {
                 fragment.appendChild(el.childNodes[0]);
             }
             return fragment;
@@ -71,7 +71,7 @@ React = typeof React === 'object' ? React : require('react');
         attributeNameToPropertyName: function (attributeName) {
             return attributeName
                 .replace(/^(x|data)[-_:]/i, '')
-                .replace(/[-_:](.)/g, function(x, chr) {
+                .replace(/[-_:](.)/g, function (x, chr) {
                     return chr.toUpperCase();
                 });
         },

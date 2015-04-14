@@ -10,6 +10,7 @@
     "react": null,
     "x-tag-core": null,
     "CustomElements": null,
-    "bind-polyfill": "~1.0.0"
+    "bind-polyfill": "~1.0.0",
+    "document-register-element": "~0.3.0"
   }
 }

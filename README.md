@@ -5,7 +5,7 @@
 Convert React.js components into Web Components
 ===============================================
 
-Compatible with any [custom elements](http://w3c.github.io/webcomponents/spec/custom/) implementation or [polyfill](https://github.com/Polymer/CustomElements).
+Compatible with any [custom elements](http://w3c.github.io/webcomponents/spec/custom/) implementation or [polyfill](https://github.com/WebReflection/document-register-element).
 
 [Demo](http://pixelscommander.com/polygon/reactive-elements/example/)
 
@@ -81,7 +81,7 @@ Dependencies
 ------------
 - [React.js](https://github.com/facebook/react)
 - ```function.bind``` and ```Object.create``` support or polyfills
-- Custom elements support or [polyfill](https://github.com/Polymer/CustomElements)
+- Custom elements support or [polyfill](https://github.com/WebReflection/document-register-element)
 
 Custom elements polyfill behavior
 ---------------------------------
