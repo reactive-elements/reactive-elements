@@ -26,6 +26,12 @@ describe("utils", function() {
             expect(jsonDeserialized[0]).toEqual('language');
             expect(jsonDeserialized[1]).toEqual('javascript');
         });
+        it("should not replace single quotes in json", function(){
+            var jsonSerialized = "{{\"status\": \"I'm active\", \"language\": \"I'm javascript\"}}",
+                jsonDeserialized = window.ReactiveElements.utils.parseAttributeValue(jsonSerialized);
+            expect(jsonDeserialized.status).toEqual("I'm active");
+            expect(jsonDeserialized.language).toEqual("I'm javascript");
+        });
     });
 
     describe(".attributeNameToPropertyName", function(){

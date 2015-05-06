@@ -84,7 +84,7 @@ React = typeof React === 'object' ? React : require('react');
                 jsonMatches = value.match(jsonRegexp) || value.match(jsonArrayRegexp);
 
             if (jsonMatches) {
-                value = JSON.parse(jsonMatches[0].replace(/^{|}$/g, '').replace(/'/g, '"'));
+                value = JSON.parse(jsonMatches[0].replace(/^{|}$/g, ''));
             } else if (pointerMatches) {
                 value = eval(pointerMatches[0].replace(/[{}]/g, ''));
             }
