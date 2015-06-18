@@ -8,25 +8,26 @@ React = typeof React === 'object' ? React : require('react');
     var registerReact = function (elementName, reactClass) {
         var elementPrototype = Object.create(HTMLElement.prototype);
 
+        function create(element, props) {
+            var reactElement = React.createElement(reactClass, props);
+            element.reactiveElement = React.render(reactElement, element);
+            utils.extend(element, element.reactiveElement);
+        }
+
         elementPrototype.createdCallback = function () {
             this._content = utils.getContentNodes(this);
-            var reactElement = React.createElement(reactClass, utils.getAllProperties(this, this.attributes));
-
-            //Since React v0.12 API was changed, so need a check for current API
-            this.reactiveElement = React.render(reactElement, this);
-
-            utils.extend(this, this.reactiveElement);
 
             utils.getterSetter(this, 'props', function () {
                 return this.reactiveElement.props;
-            }, function (value) {
-                this.reactiveElement.setProps(value);
+            }, function (props) {
+                create(this, props);
             });
+
+            create(this, utils.getAllProperties(this, this.attributes));
         };
 
         elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {
-            this.reactiveElement.props = utils.getAllProperties(this, this.attributes);
-            this.reactiveElement.forceUpdate();
+            create(this, utils.getAllProperties(this, this.attributes));
             if (this.reactiveElement.attributeChanged !== undefined) {
                 this.reactiveElement.attributeChanged.bind(this)(name, oldValue, newValue);
             }
