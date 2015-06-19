@@ -15,11 +15,11 @@ React = typeof React === 'object' ? React : require('react');
         }
 
         elementPrototype.createdCallback = function () {
-            this._content = utils.getContentNodes(this);
+            this._children = utils.getContentNodes(this);
 
             utils.getterSetter(this, 'props', function () {
                 return this.reactiveElement.props;
-            }, function (props) {
+            }, function (props) {
                 create(this, props);
             });
 
@@ -51,7 +51,7 @@ React = typeof React === 'object' ? React : require('react');
             }
         },
         getContentNodes: function (el) {
-            var fragment = document.createElement('content');
+            var fragment = document.createDocumentFragment();
             while (el.childNodes.length) {
                 fragment.appendChild(el.childNodes[0]);
             }

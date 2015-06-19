@@ -25,7 +25,7 @@ How to use?
 MyComponent = React.createClass({
   render: function() {
     console.log(this.props.items); // passed as HTML tag`s argument
-    console.log(this.props._content); // original tag contents in a <content>
+    console.log(this.props._children); // original tag children
     return <ul><li>React content</li></ul>;
   }
 });
@@ -37,13 +37,13 @@ document.registerReact('my-react-component', MyComponent);
 
 Nesting
 -------
-Original content of a custom element is injected to component as ```this.props._content```.
+Original children of a custom element is injected to component as ```this.props._children```.
 
 ```html
 <my-react-component>Hello world</my-react-component>
 ```
 
-In this case props._content is equal to "Hello world".
+In this case props._children is equal to "Hello world".
 
 Handling attributes change
 --------------------------
