@@ -33,6 +33,10 @@ React = typeof React === 'object' ? React : require('react');
             }
         }
 
+        elementPrototype.detachedCallback = function () {
+          React.unmountComponentAtNode(this);
+        }
+
         registrationFunction(elementName, {
             prototype: elementPrototype
         });
