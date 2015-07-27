@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var react = require('gulp-react');
 var uglify = require('gulp-uglify');
 var karma = require('gulp-karma');
+var browserify = require('gulp-browserify');
+var rename = require('gulp-rename');
 
 var testFiles = [
     'demo/bower_components/bind-polyfill/index.js',
@@ -24,8 +26,15 @@ gulp.task('test', function() {
 });
 
 gulp.task('default', function() {
-    gulp.src('src/*.js')
+    gulp.src('src/reactive-elements.js')
+        .pipe(browserify({
+            external: 'react',
+            standalone: 'ReactiveElements',
+            debug : !gulp.env.production
+        }))
+        .pipe(gulp.dest('dist'))
         .pipe(uglify())
+        .pipe(rename({extname: '.min.js'}))
         .pipe(gulp.dest('dist'));
 
     gulp.src('demo/jsx/*.jsx')
