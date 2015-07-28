@@ -33,6 +33,28 @@ MyComponent = React.createClass({
 document.registerReact('my-react-component', MyComponent);
 ```
 
+**HTML Element prototype override**
+```js
+/* @jsx React.DOM */
+MyComponent = React.createClass({
+  _appendChild: function(child) {
+    // This function redirects new children into proper place in component structure. Result is that children are added to the <ul> tag instead of <my-react-component>
+    React.findDOMNode(this.refs.rootElement).appendChild(child);
+  },
+  render: function() {
+    return <ul ref="rootElement"></ul>;
+  }
+});
+
+MyComponent.override = {
+  appendChild: function (child) {
+    this._appendChild(child);
+  }
+};
+
+document.registerReact('my-react-component', MyComponent);
+```
+
 **Find demo in corresponding folder.**
 
 Nesting

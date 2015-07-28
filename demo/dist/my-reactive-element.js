@@ -1,8 +1,7 @@
-/** @jsx React.DOM */
 /* @jsx React.DOM */
 window.LGI = {};
 
-window.LGI.Carusel = React.createClass({displayName: 'Carusel',
+window.LGI.Carusel = React.createClass({displayName: "Carusel",
     getInitialState: function() {
         return {
             color: '#000000'
@@ -15,14 +14,14 @@ window.LGI.Carusel = React.createClass({displayName: 'Carusel',
         var rows = [];
 
         if (this.props.items === undefined) {
-            return React.DOM.div(null);
+            return React.createElement("div", null);
         }
 
         this.props.items.forEach(function(item) {
-            rows.push(React.DOM.li( {key:item.text}, item.text));
+            rows.push(React.createElement("li", {key: item.text}, item.text));
         });
 
-        return React.DOM.div(null, "<my-reactive-element>",React.DOM.ul( {style:this.state}, rows),"</my-reactive-element>");
+        return React.createElement("div", null, "<my-reactive-element>", React.createElement("ul", {style: this.state}, rows), "</my-reactive-element>");
     },
     changeColor: function(color) {
         this.state.color = color;

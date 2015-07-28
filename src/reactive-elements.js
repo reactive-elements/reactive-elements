@@ -1,4 +1,4 @@
-(function() {
+(function () {
     var registerElement = document.registerElement || document.register;
     if (registerElement) {
         registerElement = registerElement.bind(document);
@@ -23,7 +23,7 @@
             reactElement = create(this, utils.getProps(this));
             utils.getterSetter(this, 'props', function () {
                 return reactElement.props;
-            }, function (props) {
+            }, function (props) {
                 reactElement = create(this, props);
             });
         };
@@ -36,6 +36,13 @@
             this.props[name] = newValue;
             reactElement = create(this, this.props);
         };
+
+        if (ReactComponent.override) {
+            var keys = Object.keys(ReactComponent.override);
+            for (var i = 0; i < keys.length; i++) {
+                elementPrototype[keys[i]] = ReactComponent.override[keys[i]];
+            }
+        }
 
         registerElement(elementName, {prototype: elementPrototype});
     };
