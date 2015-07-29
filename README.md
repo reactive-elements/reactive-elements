@@ -47,7 +47,7 @@ In this case props.children is equal to "Hello world".
 
 Container node of the element is passed as ```this.props.container```. Both props.container and props.children have type of ```documentFragment```.
 
-Exposing components methods to custom element
+Exposing components methods on custom element
 ---------------------------------------------
 If you want to expose React component methods on custom element - assign them to component as following:
 ```html
