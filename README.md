@@ -37,13 +37,24 @@ document.registerReact('my-react-component', MyComponent);
 
 Nesting
 -------
-Original children of a custom element is injected to component as ```this.props._children```.
+Original children of a custom element is injected to component as ```this.props.children```.
 
 ```html
 <my-react-component>Hello world</my-react-component>
 ```
 
-In this case props._children is equal to "Hello world".
+In this case props.children is equal to "Hello world".
+
+Container node of the element is passed as ```this.props.container```. Both props.container and props.children have type of ```documentFragment```.
+
+Exposing components methods to custom element
+---------------------------------------------
+If you want to expose React component methods on custom element - assign them to component as following:
+```html
+componentDidMount: function() {
+    this.props.container.setTextContent = this.setTextContent.bind(this);
+    ...Add
+```
 
 Handling attributes change
 --------------------------
