@@ -53,7 +53,7 @@ If you want to expose React component methods on custom element - assign them to
 ```html
 componentDidMount: function() {
     this.props.container.setTextContent = this.setTextContent.bind(this);
-    ...Add
+    ...
 ```
 
 Handling attributes change
