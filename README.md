@@ -74,11 +74,11 @@ You may trigger DOM event from React component by using following snippet:
 var event = new CustomEvent('change', {
       bubbles: true
     });
-this.getDOMNode().dispatchEvent(event)
+React.findDOMNode(this).dispatchEvent(event)
 ```
 Subscribing to DOM events is similar:
 ```html
-this.getDOMNode().addEventListener('change', function(e){...});
+React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
 NPM and Bower
