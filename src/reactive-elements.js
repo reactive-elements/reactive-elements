@@ -1,9 +1,10 @@
 (function() {
     var registerElement = document.registerElement || document.register;
+
     if (registerElement) {
         registerElement = registerElement.bind(document);
     } else {
-        // There is no custom element support or polyfill.
+        throw new Error('No custom element support or polyfill found!');
         return;
     }
 
@@ -21,9 +22,10 @@
 
         elementPrototype.createdCallback = function () {
             reactElement = create(this, utils.getProps(this));
+            exposeDefaultMethods(reactElement, reactElement.props.container);
             utils.getterSetter(this, 'props', function () {
                 return reactElement.props;
-            }, function (props) {
+            }, function (props) {
                 reactElement = create(this, props);
             });
         };
@@ -33,17 +35,21 @@
         };
 
         elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {
-            this.props[name] = newValue;
+            var propertyName = utils.attributeNameToPropertyName(name),
+                value = utils.parseAttributeValue(newValue);
+
+            this.props[propertyName] = value;
             reactElement = create(this, this.props);
         };
 
         registerElement(elementName, {prototype: elementPrototype});
     };
 
+    function exposeDefaultMethods (reactComponent, customElement) {
+        customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
+    }
+
     exports.utils = utils;
 
     document.registerReact = exports.registerReact;
-    if (window.xtag) {
-        window.xtag.registerReact = registerReact;
-    }
 }())

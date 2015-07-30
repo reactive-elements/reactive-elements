@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./css/style.css"></link>
     <script src="../bower_components/document-register-element/build/document-register-element.js"></script>
     <script src="../bower_components/react/react.js"></script>
-    <script src="../src/reactive-elements.js"></script>
+    <script src="../dist/reactive-elements.js"></script>
     <script src="./dist/my-reactive-element.js"></script>
     <script>
         window.browsers = [
@@ -60,9 +60,9 @@
             <button onclick="changeAttribute()">Change component attributes</button>
         </li><li>
             <button onclick="addReactiveElement()">Add component with document.createElement</button>
-        </li><li>
+        </li><!--<li>
         <button onclick="window.location.href = 'http://pixelscommander.com/polygon/reactbb/react/tests/broadcasts-list.html';">TV Schedule custom element demo</button>
-        </li>
+        </li>-->
     </ul>
     <my-reactive-element id="carusel" class="left_top_widget" case-sensitive-property-name="Some value from camel case named variable" json-property='{{"status": "active", "language": "javascript"}}' items="{window.browsers}">123</my-reactive-element>
     <script>
@@ -86,6 +86,7 @@
 
         function addReactiveElement() {
             var carusel = document.createElement('my-reactive-element');
+            carusel.setAttribute('items', '{window.browsers}');
             carusel.className = 'right_top_widget';
             carusel.props.items = window.browsers;
 
