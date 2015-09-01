@@ -25,7 +25,7 @@ How to use?
 MyComponent = React.createClass({
   render: function() {
     console.log(this.props.items); // passed as HTML tag`s argument
-    console.log(this.props._children); // original tag children
+    console.log(this.props.children); // original tag children
     return <ul><li>React content</li></ul>;
   }
 });
