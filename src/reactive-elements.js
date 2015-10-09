@@ -17,7 +17,7 @@
 
         function create(parent, props) {
             var element = React.createElement(ReactComponent, props);
-            return React.render(element, parent);
+            return React.render(element, parent, props.onRender);
         }
 
         elementPrototype.createdCallback = function () {
