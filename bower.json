@@ -1,6 +1,6 @@
 {
   "name": "ReactiveElements",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
   "authors": [
     "Denis Radin <denis.radin@gmail.com>",
@@ -21,6 +21,13 @@
     "custom",
     "elements"
   ],
+  "dependencies": {
+    "react": null,
+    "x-tag-core": null,
+    "CustomElements": null,
+    "bind-polyfill": "~1.0.0",
+    "document-register-element": "~0.3.0"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",

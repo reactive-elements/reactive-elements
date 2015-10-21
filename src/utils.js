@@ -1,3 +1,15 @@
+exports.extend = function (extandable, extending) {
+    for (var i in extending) {
+        if (!(i in extandable)) {
+            if (typeof extending[i] === 'function') {
+                extandable[i] = extending[i].bind(extending);
+            } else {
+                extandable[i] = extending[i];
+            }
+        }
+    }
+};
+
 exports.getProps = function (el) {
     var props = {};
 

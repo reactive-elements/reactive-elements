@@ -3,9 +3,6 @@
 window.LGI = {};
 
 window.LGI.Carusel = React.createClass({displayName: 'Carusel',
-    componentDidMount: function() {
-        this.props.container.changeColor = this.changeColor.bind(this);
-    },
     getInitialState: function() {
         return {
             color: '#000000'

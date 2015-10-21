@@ -21,8 +21,11 @@
         }
 
         elementPrototype.createdCallback = function () {
-            reactElement = create(this, utils.getProps(this));
+            console.log('Created');
+            var properties = utils.getProps(this);
+            reactElement = create(this, properties);
             exposeDefaultMethods(reactElement, reactElement.props.container);
+            exposeMethods(reactElement, reactElement.props.container);
             utils.getterSetter(this, 'props', function () {
                 return reactElement.props;
             }, function (props) {
@@ -47,6 +50,10 @@
 
     function exposeDefaultMethods (reactComponent, customElement) {
         customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
+    }
+
+    function exposeMethods (reactComponent, customElement) {
+        utils.extend(customElement, reactComponent);
     }
 
     exports.utils = utils;
