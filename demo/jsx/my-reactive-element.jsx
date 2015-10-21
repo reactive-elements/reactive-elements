@@ -13,6 +13,10 @@ window.LGI.Carusel = React.createClass({
     render: function() {
         var rows = [];
 
+        var styleObject = {
+            color: this.state.color
+        }
+
         if (this.props.items === undefined) {
             return <div></div>;
         }
@@ -21,7 +25,7 @@ window.LGI.Carusel = React.createClass({
             rows.push(<li key={item.text}>{item.text}</li>);
         });
 
-        return <div>&lt;my-reactive-element&gt;<ul style={this.state}>{rows}</ul>&lt;/my-reactive-element&gt;</div>;
+        return <div>&lt;my-reactive-element&gt;<ul style={styleObject}>{rows}</ul>&lt;/my-reactive-element&gt;</div>;
     },
     changeColor: function(color) {
         this.state.color = color;

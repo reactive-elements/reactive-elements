@@ -25,8 +25,8 @@
             var properties = utils.getProps(this);
             reactElement = create(this, properties);
 
-            exposeDefaultMethods(reactElement, reactElement.props.container);
             exposeMethods(reactElement, reactElement.props.container);
+            exposeDefaultMethods(reactElement, reactElement.props.container);
 
             utils.getterSetter(this, 'props', function () {
                 return reactElement.props;
@@ -51,16 +51,18 @@
             });
         };
 
+        function exposeDefaultMethods (reactComponent, customElement) {
+            customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
+        }
+
+        function exposeMethods (reactComponent, customElement) {
+            utils.extend(customElement, reactComponent);
+        }
+
         registerElement(elementName, {prototype: elementPrototype});
     };
 
-    function exposeDefaultMethods (reactComponent, customElement) {
-        customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
-    }
 
-    function exposeMethods (reactComponent, customElement) {
-        utils.extend(customElement, reactComponent);
-    }
 
     exports.utils = utils;
 
