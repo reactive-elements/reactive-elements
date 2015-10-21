@@ -24,8 +24,10 @@
             console.log('Created');
             var properties = utils.getProps(this);
             reactElement = create(this, properties);
+
             exposeDefaultMethods(reactElement, reactElement.props.container);
             exposeMethods(reactElement, reactElement.props.container);
+
             utils.getterSetter(this, 'props', function () {
                 return reactElement.props;
             }, function (props) {
@@ -41,8 +43,12 @@
             var propertyName = utils.attributeNameToPropertyName(name),
                 value = utils.parseAttributeValue(newValue);
 
-            this.props[propertyName] = value;
-            reactElement = create(this, this.props);
+            var propertiesObject = {};
+            propertiesObject[propertyName] = value;
+
+            this.setProps(propertiesObject, function(){
+                reactElement = create(this, this.props);
+            });
         };
 
         registerElement(elementName, {prototype: elementPrototype});

@@ -97,11 +97,10 @@
             var carusel = document.createElement('my-reactive-element');
             carusel.setAttribute('items', '{window.browsers}');
             carusel.className = 'right_top_widget';
-            carusel.props.items = window.browsers;
+            carusel.setProps({items: window.browsers});
 
             var wrapper = document.getElementById('wrapper')
             wrapper.appendChild(carusel);
-            carusel.forceUpdate();
         }
     </script>
     <!-- AddThis Button BEGIN -->
