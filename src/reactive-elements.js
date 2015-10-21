@@ -17,6 +17,7 @@
 
         function create(parent, props) {
             var element = React.createElement(ReactComponent, props);
+            parent.reactiveElement = element;
             return React.render(element, parent, props.onRender);
         }
 
@@ -51,18 +52,16 @@
             });
         };
 
-        function exposeDefaultMethods (reactComponent, customElement) {
-            customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
-        }
-
-        function exposeMethods (reactComponent, customElement) {
-            utils.extend(customElement, reactComponent);
-        }
-
         registerElement(elementName, {prototype: elementPrototype});
     };
 
+    function exposeDefaultMethods (reactComponent, customElement) {
+        customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
+    }
 
+    function exposeMethods (reactComponent, customElement) {
+        utils.extend(customElement, reactComponent);
+    }
 
     exports.utils = utils;
 
