@@ -16,7 +16,6 @@ exports.getProps = function (el) {
     }
 
     props.container = el;
-    props.children = getChildren(el);
 
     return props;
 };
@@ -62,7 +61,7 @@ exports.parseAttributeValue = function (value) {
     return value;
 };
 
-function getChildren(el) {
+exports.getChildren = function (el) {
     var fragment = document.createDocumentFragment();
     while (el.childNodes.length) {
         fragment.appendChild(el.childNodes[0]);

@@ -22,10 +22,9 @@
         }
 
         elementPrototype.createdCallback = function () {
-            console.log('Created');
-            var properties = utils.getProps(this);
-            reactElement = create(this, properties);
-
+            var props = utils.getProps(this);
+            props.children = utils.getChildren(this);
+            reactElement = create(this, props);
             exposeMethods(reactElement, reactElement.props.container);
             exposeDefaultMethods(reactElement, reactElement.props.container);
 
