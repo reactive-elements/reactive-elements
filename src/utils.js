@@ -1,7 +1,26 @@
-exports.extend = function (extandable, extending) {
-    for (var i in extending) {
-        if (!(i in extandable)) {
-            extandable[i] = extending[i];
+var getAllProperties = function (obj) {
+    var props = {};
+    while (obj && obj !== React.Component.prototype && obj !== Object.prototype) {
+        var propNames = Object.getOwnPropertyNames(obj);
+        for (var i = 0; i < propNames.length; i++) {
+            props[propNames[i]] = null;
+        }
+        obj = Object.getPrototypeOf(obj);
+    }
+    delete props.constructor;
+    return Object.keys(props);
+};
+
+exports.extend = function (extensible, extending) {
+    var props = getAllProperties(extending);
+    for (var i = 0; i < props.length; i++) {
+        var prop = props[i];
+        if (!(prop in extensible)) {
+            var val = extending[prop];
+            if (typeof val === 'function') {
+                val = val.bind(extending);
+            }
+            extensible[prop] = val;
         }
     }
 };
