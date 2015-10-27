@@ -9,6 +9,7 @@
     }
 
     var React = window.React || require('react');
+    var ReactDOM = window.ReactDOM || require('react-dom');
     var utils = require('./utils');
 
     exports.registerReact = function (elementName, ReactComponent) {
@@ -18,7 +19,7 @@
         function create(parent, props) {
             var element = React.createElement(ReactComponent, props);
             parent.reactiveElement = element;
-            return React.render(element, parent, props.onRender);
+            return ReactDOM.render(element, parent, props.onRender);
         }
 
         elementPrototype.createdCallback = function () {
@@ -36,7 +37,7 @@
         };
 
         elementPrototype.detachedCallback = function () {
-            React.unmountComponentAtNode(this);
+            ReactDOM.unmountComponentAtNode(this);
         };
 
         elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {

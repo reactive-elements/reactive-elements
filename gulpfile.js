@@ -28,7 +28,7 @@ gulp.task('test', function() {
 gulp.task('default', function() {
     gulp.src('src/reactive-elements.js')
         .pipe(browserify({
-            external: 'react',
+            external: ['react', 'react-dom'],
             standalone: 'ReactiveElements',
             debug : !gulp.env.production
         }))

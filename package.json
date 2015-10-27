@@ -66,6 +66,7 @@
     "karma-phantomjs-launcher": "~0.1.4"
   },
   "peerDependencies": {
-    "react": "^0.13.3"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   }
 }
