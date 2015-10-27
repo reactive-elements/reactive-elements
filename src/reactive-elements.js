@@ -8,8 +8,8 @@
         return;
     }
 
-    var React = require('react');
-    var ReactDOM = require('react-dom');
+    var React = window.React || require('react');
+    var ReactDOM = window.ReactDOM || require('react-dom');
     var utils = require('./utils');
 
     exports.registerReact = function (elementName, ReactComponent) {
