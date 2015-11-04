@@ -6,8 +6,8 @@ var browserify = require('gulp-browserify');
 var rename = require('gulp-rename');
 
 var testFiles = [
-    'demo/bower_components/bind-polyfill/index.js',
-    'demo/bower_components/react/react.min.js',
+    'node_modules/bind-polyfill/index.js',
+    'node_modules/react/react.min.js',
     'src/*.js',
     'test/*.spec.js'
 ];

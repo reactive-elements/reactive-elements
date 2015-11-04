@@ -1,3 +1,5 @@
+var React = window.React || require('react');
+
 var getAllProperties = function (obj) {
     var props = {};
     while (obj && obj !== React.Component.prototype && obj !== Object.prototype) {

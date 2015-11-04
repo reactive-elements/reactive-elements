@@ -9,7 +9,7 @@
     }
 
     var React = window.React || require('react');
-    var ReactDOM = window.React || require('react-dom');
+    var ReactDOM = window.ReactDOM || require('react-dom');
     var utils = require('./utils');
 
     exports.registerReact = function (elementName, ReactComponent) {
