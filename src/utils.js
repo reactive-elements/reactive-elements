@@ -66,6 +66,10 @@ exports.attributeNameToPropertyName = function (attributeName) {
 };
 
 exports.parseAttributeValue = function (value) {
+    if (!value) {
+        return null;
+    }
+
     var pointerRegexp = /^{.*?}$/i,
         jsonRegexp = /^{{2}.*}{2}$/,
         jsonArrayRegexp = /^{\[.*\]}$/;
