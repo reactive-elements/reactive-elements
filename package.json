@@ -1,6 +1,6 @@
 {
   "name": "reactive-elements",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Allows to use React.js component as custom element",
   "main": "src/reactive-elements.js",
   "scripts": {

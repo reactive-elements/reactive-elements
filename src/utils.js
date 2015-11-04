@@ -88,4 +88,9 @@ exports.getChildren = function (el) {
         fragment.appendChild(el.childNodes[0]);
     }
     return fragment;
-}
+};
+
+exports.shallowCopy = function (a, b) {
+    for (var key in b) a[key] = b[key];
+    return a;
+};
