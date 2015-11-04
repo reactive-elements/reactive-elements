@@ -44,12 +44,9 @@
             var propertyName = utils.attributeNameToPropertyName(name),
                 value = utils.parseAttributeValue(newValue);
 
-            var propertiesObject = {};
-            propertiesObject[propertyName] = value;
-
-            this.setProps(propertiesObject, function(){
-                reactElement = create(this, this.props);
-            });
+            var props = utils.shallowCopy({}, this.props);
+            props[propertyName] = value;
+            reactElement = create(this, props);
         };
 
         registerElement(elementName, {prototype: elementPrototype});
