@@ -70,6 +70,9 @@ exports.parseAttributeValue = function (value) {
         return null;
     }
 
+    // Support attribute values with newlines
+    value = value.replace(/[\n\r]/g, '');
+
     var pointerRegexp = /^{.*?}$/i,
         jsonRegexp = /^{{2}.*}{2}$/,
         jsonArrayRegexp = /^{\[.*\]}$/;
