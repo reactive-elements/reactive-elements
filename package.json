@@ -1,6 +1,6 @@
 {
   "name": "reactive-elements",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Allows to use React.js component as custom element",
   "main": "src/reactive-elements.js",
   "scripts": {
@@ -45,6 +45,11 @@
       "name": "Oleg Slobodskoi",
       "email": "oleg008@gmail.com",
       "url": "https://kof.github.io"
+    },
+    {
+      "name": "James Broad",
+      "email": "jb@carbonsilk.com",
+      "url": "http://kulor.com"
     }
   ],
   "license": "MIT",
