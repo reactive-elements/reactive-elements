@@ -6,7 +6,7 @@
     <script src="../node_modules/document-register-element/build/document-register-element.js"></script>
     <script src="../node_modules/react/dist/react.js"></script>
     <script src="../node_modules/react-dom/dist/react-dom.js"></script>
-    <script src="../dist/reactive-elements.js"></script>
+    <script src="../dist/reactive-elements.min.js"></script>
     <script src="./dist/my-reactive-element.js"></script>
     <script>
         window.browsers = [
@@ -91,14 +91,15 @@
 
         function changePropertiesDirectly() {
             var carusel = document.getElementById('carusel');
-            carusel.setProps({items: window.justNames});
+            carusel.props = {items: window.justNames}
+            carusel.forceUpdate()
         }
 
         function addReactiveElement() {
             var carusel = document.createElement('my-reactive-element');
             carusel.setAttribute('items', '{window.browsers}');
             carusel.className = 'right_top_widget';
-            carusel.setProps({items: window.browsers});
+            carusel.props = {items: window.browsers}
 
             var wrapper = document.getElementById('wrapper')
             wrapper.appendChild(carusel);
