@@ -19,9 +19,6 @@ exports.extend = function (extensible, extending) {
         var prop = props[i];
         if (!(prop in extensible)) {
             var val = extending[prop];
-            if (typeof val === 'function') {
-                val = val.bind(extending);
-            }
             extensible[prop] = val;
         }
     }
