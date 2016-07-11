@@ -4,7 +4,7 @@
   "description": "Allows to use React.js component as custom element",
   "main": "src/reactive-elements.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start",
+    "test": "npm run build && ./node_modules/.bin/karma start",
     "build": "webpack && webpack -p"
   },
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
@@ -65,7 +65,6 @@
     "karma-chrome-launcher": "^0.1.12",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
-    "karma-phantomjs-launcher": "~0.1.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "lodash.assign": "^4.0.9",
