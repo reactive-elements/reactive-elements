@@ -5,7 +5,6 @@
         registerElement = registerElement.bind(document);
     } else {
         throw new Error('No custom element support or polyfill found!');
-        return;
     }
 
     var React = window.React || require('react');
