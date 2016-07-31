@@ -1,4 +1,5 @@
 var React = window.React || require('react');
+var renderHTML = require('react-render-html');
 
 var getAllProperties = function (obj) {
     var props = {};
@@ -87,11 +88,9 @@ exports.parseAttributeValue = function (value) {
 };
 
 exports.getChildren = function (el) {
-    var fragment = document.createDocumentFragment();
-    while (el.childNodes.length) {
-        fragment.appendChild(el.childNodes[0]);
-    }
-    return fragment;
+    var html = el.innerHTML;
+    el.innerHTML = "";
+    return renderHTML(html);
 };
 
 exports.shallowCopy = function (a, b) {
