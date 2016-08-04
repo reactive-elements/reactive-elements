@@ -6,7 +6,7 @@ module.exports = exports = {
   entry: './index.js',
   output: {
     path: './dist',
-    libraryTarget: minimize ? undefined : 'commonjs',
+    libraryTarget: minimize ? 'umd' : 'commonjs',
     filename: 'reactive-elements.' + (minimize ? 'min.' : '') + 'js'
   },
   externals: {
