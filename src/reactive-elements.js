@@ -40,11 +40,7 @@
         };
 
         elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {
-            var propertyName = utils.attributeNameToPropertyName(name),
-                value = utils.parseAttributeValue(newValue);
-
-            var props = utils.shallowCopy({}, this.props);
-            props[propertyName] = value;
+            var props = utils.getProps(this);
             reactElement = create(this, props);
         };
 
