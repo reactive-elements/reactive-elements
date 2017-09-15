@@ -25,14 +25,17 @@
             var props = utils.getProps(this);
             props.children = utils.getChildren(this);
             reactElement = create(this, props);
-            exposeMethods(reactElement, reactElement.props.container);
-            exposeDefaultMethods(reactElement, reactElement.props.container);
 
-            utils.getterSetter(this, 'props', function () {
-                return reactElement.props;
-            }, function (props) {
-                reactElement = create(this, props);
-            });
+            if (reactElement !== null) {
+                exposeMethods(reactElement, reactElement.props.container);
+                exposeDefaultMethods(reactElement, reactElement.props.container);
+                
+                utils.getterSetter(this, 'props', function () {
+                    return reactElement.props;
+                }, function (props) {
+                    reactElement = create(this, props);
+                });
+            }            
         };
 
         elementPrototype.detachedCallback = function () {
