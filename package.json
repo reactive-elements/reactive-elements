@@ -1,6 +1,6 @@
 {
   "name": "reactive-elements",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "Allows to use React.js component as custom element",
   "main": "src/reactive-elements.js",
   "scripts": {
@@ -55,6 +55,10 @@
     {
       "name": "Yuri Tkachenko",
       "email": "yuri@ya.ru"
+    },
+    {
+      "name": "Sergey Shvager",
+      "url": "https://github.com/SergeyShvager"
     }
   ],
   "license": "MIT",
