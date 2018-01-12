@@ -47,6 +47,23 @@ In this case props.children is equal to "Hello world".
 
 Container node of the element is passed as ```this.props.container```. Both props.container and props.children have type of ```documentFragment```.
 
+Boolean attribute transforms
+----------------------------
+
+An attribute that has the value `"true"` or `"false"` will be converted into the boolean `true` or `false` when given to the React component:
+
+```html
+<my-react-component is-logged-in="true">Hello world</my-react-component>
+```
+
+Here, `this.props.isLoggedIn === true` within the React component.
+
+If you don't want this behaviour you can disable it with a special attribute:
+
+```html
+<my-react-component is-logged-in="true" reactive-elements-no-boolean-transform>Hello world</my-react-component>
+```
+
 Exposing components methods on custom element
 ---------------------------------------------
 If you want to expose React component methods on custom element - assign them to component as following:

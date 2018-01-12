@@ -22,6 +22,23 @@ describe("utils", function() {
             expect(jsonDeserialized.language).toEqual('javascript');
         });
 
+        it("should convert string 'true' to boolean", function(){
+            var boolAttr = ReactiveElements.utils.parseAttributeValue('true');
+            expect(boolAttr).toEqual(true);
+        });
+
+        it("should convert string 'false' to boolean", function(){
+            var boolAttr = ReactiveElements.utils.parseAttributeValue('false');
+            expect(boolAttr).toEqual(false);
+        });
+
+        it("should not convert string booleans when it is disabled", function(){
+            var boolAttr = ReactiveElements.utils.parseAttributeValue('false', {
+              noBooleanTransforms: true,
+            });
+            expect(boolAttr).toEqual('false');
+        });
+
         it("should convert JSON array literal string to JSON object", function(){
             var jsonSerialized = "{[\"language\", \"javascript\"]}",
                 jsonDeserialized = ReactiveElements.utils.parseAttributeValue(jsonSerialized);
