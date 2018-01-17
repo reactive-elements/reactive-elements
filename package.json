@@ -79,6 +79,7 @@
   "dependencies": {
     "document-register-element": "^0.5.0",
     "react": "^15.2.0",
-    "react-dom": "^15.2.0"
+    "react-dom": "^15.2.0",
+    "react-render-html": "^0.1.5"
   }
 }
