@@ -10,10 +10,8 @@ module.exports = exports = {
     filename: 'reactive-elements.' + (minimize ? 'min.' : '') + 'js'
   },
   externals: {
-  	react: true,
-  	'react-dom': true
+    react: true,
+    'react-dom': true
   },
-  module: {
-  },
-  devtool: '#inline-source-map'
+  devtool: false
 }
