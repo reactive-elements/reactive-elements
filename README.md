@@ -47,7 +47,7 @@ In this case props.children is equal to "Hello world".
 
 Container node of the element is passed as ```this.props.container```. Both props.container and props.children have type of ```documentFragment```.
 
-Boolean attribute transforms
+Boolean attribute transforms (added in version 0.7.0)
 ----------------------------
 
 An attribute that has the value `"true"` or `"false"` will be converted into the boolean `true` or `false` when given to the React component:
