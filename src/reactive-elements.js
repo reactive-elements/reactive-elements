@@ -29,13 +29,13 @@
             if (reactElement !== null) {
                 exposeMethods(reactElement, reactElement.props.container);
                 exposeDefaultMethods(reactElement, reactElement.props.container);
-                
+
                 utils.getterSetter(this, 'props', function () {
                     return reactElement.props;
                 }, function (props) {
                     reactElement = create(this, props);
                 });
-            }            
+            }
         };
 
         elementPrototype.detachedCallback = function () {

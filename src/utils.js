@@ -1,4 +1,5 @@
 var React = window.React || require('react');
+var noBooleanTransformName = 'reactive-elements-no-boolean-transform';
 
 var getAllProperties = function (obj) {
     var props = {};
@@ -24,13 +25,30 @@ exports.extend = function (extensible, extending) {
     }
 };
 
+var elementHasNoBooleanTransformAttribute = function (el) {
+  var foundAttribute = false;
+  for (var i = 0; i < el.attributes.length; i++) {
+    var attribute = el.attributes[i];
+    if (attribute.name === noBooleanTransformName) {
+      foundAttribute = true;
+      break;
+    }
+  }
+  return foundAttribute;
+}
+
 exports.getProps = function (el) {
     var props = {};
+    var noBooleanTransforms = elementHasNoBooleanTransformAttribute(el);
 
     for (var i = 0; i < el.attributes.length; i++) {
         var attribute = el.attributes[i];
+        if (attribute.name === noBooleanTransformName) continue;
+
         var name = exports.attributeNameToPropertyName(attribute.name);
-        props[name] = exports.parseAttributeValue(attribute.value);
+        props[name] = exports.parseAttributeValue(attribute.value, {
+            noBooleanTransforms: noBooleanTransforms,
+        });
     }
 
     props.container = el;
@@ -62,9 +80,13 @@ exports.attributeNameToPropertyName = function (attributeName) {
         });
 };
 
-exports.parseAttributeValue = function (value) {
+exports.parseAttributeValue = function (value, transformOptions) {
     if (!value) {
         return null;
+    }
+
+    if (!transformOptions) {
+        transformOptions = {}
     }
 
     // Support attribute values with newlines
@@ -81,6 +103,9 @@ exports.parseAttributeValue = function (value) {
         value = JSON.parse(jsonMatches[0].replace(/^{|}$/g, ''));
     } else if (pointerMatches) {
         value = eval(pointerMatches[0].replace(/[{}]/g, ''));
+    } else if ((value === 'true' || value === 'false') && !transformOptions.noBooleanTransforms) {
+        // convert the value to its actual boolean
+        value = value === 'true';
     }
 
     return value;
