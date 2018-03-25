@@ -81,8 +81,10 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "document-register-element": "^0.5.0",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0"
+    "document-register-element": "^1.7.2"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
   }
 }
