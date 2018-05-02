@@ -5,6 +5,11 @@
 Convert React.js components into Web Components
 ===============================================
 
+```
+npm install reactive-elements
+yarn add reactive-elements
+```
+
 [Live demo](http://pixelscommander.com/polygon/reactive-elements/example/)
 
 *UPD* Convert Angular and Backbone views as well with [MVC elements project](https://github.com/MVC-Elements)
@@ -98,10 +103,18 @@ Subscribing to DOM events is similar:
 React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
-NPM and Bower
-------------------------------------------
-- NPM: reactive-elements
-- Bower: ReactiveElements
+Using attachedCallback
+--------------------------
+
+By default this module uses the web component `createdCallback`, so it kicks off the rendering process _before_ the component is fully attached to the DOM. In some cases you might prefer to delay the rendering process until the component is attached.
+
+If this is the case, you can pass `renderOnAttached` as an option:
+
+```js
+document.registerReact('example-component', 'ExampleComponent', {
+  renderOnAttached: true,
+})
+```
 
 Dependencies
 ------------
