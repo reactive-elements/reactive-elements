@@ -64,7 +64,12 @@
 	    var ReactDOM = window.ReactDOM || __webpack_require__(3);
 	    var utils = __webpack_require__(4);
 
-	    exports.registerReact = function (elementName, ReactComponent) {
+	    exports.registerReact = function (elementName, ReactComponent, options) {
+
+	        options = options || {
+	            renderOnAttached: false,
+	        };
+
 	        var elementPrototype = Object.create(HTMLElement.prototype);
 	        var reactElement;
 
@@ -74,7 +79,9 @@
 	            return ReactDOM.render(element, parent, props.onRender);
 	        }
 
-	        elementPrototype.createdCallback = function () {
+	        var renderCallback = options.renderOnAttached ? 'attachedCallback' : 'createdCallback';
+
+	        elementPrototype[renderCallback] = function () {
 	            var props = utils.getProps(this);
 	            props.children = utils.getChildren(this);
 	            reactElement = create(this, props);
@@ -96,8 +103,11 @@
 	        };
 
 	        elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {
-	            var props = utils.getProps(this);
-	            reactElement = create(this, props);
+	            // we only care about attribute changes once we've rendered initially
+	            if (this.reactiveElement) {
+	                var props = utils.getProps(this);
+	                reactElement = create(this, props);
+	            }
 	        };
 
 	        registerElement(elementName, {prototype: elementPrototype});
