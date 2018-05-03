@@ -15,6 +15,7 @@
 
         options = options || {
             renderOnAttached: false,
+            ignoreAttributeChanged: false,
         };
 
         var elementPrototype = Object.create(HTMLElement.prototype);
@@ -50,6 +51,10 @@
         };
 
         elementPrototype.attributeChangedCallback = function (name, oldValue, newValue) {
+            if (options.ignoreAttributeChanged === true) {
+                return
+            }
+
             // we only care about attribute changes once we've rendered initially
             if (this.reactiveElement) {
                 var props = utils.getProps(this);
