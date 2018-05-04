@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - lts/* # latest LTS release
+  - node # latest stable release
+addons:
+  chrome: stable
+script: npm test -- --browsers ChromeHeadlessNoSandbox # https://docs.travis-ci.com/user/chrome#Sandboxing

@@ -71,13 +71,13 @@
     "email": "denis.radin@gmail.com"
   },
   "devDependencies": {
-    "jasmine": "^2.4.1",
-    "jasmine-core": "^2.4.1",
-    "karma": "^1.1.1",
-    "karma-chrome-launcher": "^0.1.12",
-    "karma-jasmine": "^1.0.2",
+    "jasmine": "^3.0.0",
+    "jasmine-core": "^3.0.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^1.7.0",
+    "karma-webpack": "^2.0.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
