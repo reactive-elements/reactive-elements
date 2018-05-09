@@ -5,7 +5,7 @@
 Convert React.js components into Web Components
 ===============================================
 
-```
+```sh
 npm install reactive-elements
 yarn add reactive-elements
 ```
@@ -72,7 +72,7 @@ If you don't want this behaviour you can disable it with a special attribute:
 Exposing components methods on custom element
 ---------------------------------------------
 If you want to expose React component methods on custom element - assign them to component as following:
-```html
+```js
 componentDidMount: function() {
     this.props.container.setTextContent = this.setTextContent.bind(this);
     ...
@@ -82,7 +82,7 @@ Handling attributes change
 --------------------------
 You may add ```attributeChanged``` callback to component in order to handle / modify / filter incoming values.
 
-```html
+```js
 attributeChanged: function(attributeName, oldValue, newValue) {
     console.log('Attribute ' + attributeName + ' was changed from ' + oldValue + ' to ' + newValue);
     this.props[attributeName] = parseInt(newValue);
@@ -92,14 +92,14 @@ attributeChanged: function(attributeName, oldValue, newValue) {
 Communicate via DOM events
 ---------------------------
 You may trigger DOM event from React component by using following snippet:
-```html
+```js
 var event = new CustomEvent('change', {
       bubbles: true
     });
 React.findDOMNode(this).dispatchEvent(event)
 ```
 Subscribing to DOM events is similar:
-```html
+```js
 React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
