@@ -5,6 +5,10 @@
   "main": "src/reactive-elements.js",
   "scripts": {
     "test": "npm run build && ./node_modules/.bin/karma start",
+    "prettier-check":
+      "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --list-different",
+    "prettier-write":
+      "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --write",
     "build": "./node_modules/.bin/webpack && ./node_modules/.bin/webpack -p"
   },
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
@@ -12,12 +16,7 @@
     "type": "git",
     "url": "https://github.com/PixelsCommander/ReactiveElements.git"
   },
-  "keywords": [
-    "react",
-    "web-components",
-    "custom elements",
-    "reactjs"
-  ],
+  "keywords": ["react", "web-components", "custom elements", "reactjs"],
   "author": {
     "name": "Denis Radin aka PixelsCommander",
     "email": "denis.radin@gmail.com",
@@ -78,6 +77,7 @@
     "karma-jasmine": "^1.1.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.0",
+    "prettier": "^1.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "webpack": "^1.13.1"

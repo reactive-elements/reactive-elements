@@ -1,10 +1,10 @@
-_ReactiveElements has not had a changelog in the past, but this one started as of version 0.8.0 onwards._
+_ReactiveElements has not had a changelog in the past, but this one started as
+of version 0.8.0 onwards._
 
-__0.9.0__ 10 May 18
+**0.9.0** 10 May 18
 
-- Add `ignoreAttributeChanged` option.
+* Add `ignoreAttributeChanged` option.
 
+**0.8.0** 02 May 18
 
-__0.8.0__ 02 May 18
-
-- First release that we're tracking in the changelog.
+* First release that we're tracking in the changelog.
