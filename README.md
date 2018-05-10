@@ -2,16 +2,15 @@
     <img alt="Reactive Elements" src="http://pixelscommander.com/polygon/reactive-elements/assets/logo-reactive-elements-small.png"/>
 </a>
 
-Convert React.js components into Web Components
-===============================================
+# Convert React.js components into Web Components
 
 ```sh
 npm install reactive-elements
 yarn add reactive-elements
 ```
 
-How to use?
--------
+## How to use?
+
 **Placing component in a pure HTML**
 
 ```html
@@ -21,22 +20,28 @@ How to use?
 ```
 
 **React class definition**
+
 ```js
 /* @jsx React.DOM */
 MyComponent = React.createClass({
   render: function() {
     console.log(this.props.items); // passed as HTML tag`s argument
     console.log(this.props.children); // original tag children
-    return <ul><li>React content</li></ul>;
-  }
+    return (
+      <ul>
+        <li>React content</li>
+      </ul>
+    );
+  },
 });
 
 document.registerReact('my-react-component', MyComponent);
 ```
 
-Nesting
--------
-Original children of a custom element is injected to component as `this.props.children`.
+## Nesting
+
+Original children of a custom element is injected to component as
+`this.props.children`.
 
 ```html
 <my-react-component>Hello world</my-react-component>
@@ -44,12 +49,13 @@ Original children of a custom element is injected to component as `this.props.ch
 
 In this case `this.props.children` is equal to "Hello world".
 
-Container node of the element is passed as `this.props.container`. Both props.container and props.children have type of `documentFragment`.
+Container node of the element is passed as `this.props.container`. Both
+props.container and props.children have type of `documentFragment`.
 
-Boolean attribute transforms (added in version 0.7.0)
-----------------------------
+## Boolean attribute transforms (added in version 0.7.0)
 
-An attribute that has the value `"true"` or `"false"` will be converted into the boolean `true` or `false` when given to the React component:
+An attribute that has the value `"true"` or `"false"` will be converted into the
+boolean `true` or `false` when given to the React component:
 
 ```html
 <my-react-component is-logged-in="true">Hello world</my-react-component>
@@ -63,19 +69,21 @@ If you don't want this behaviour you can disable it with a special attribute:
 <my-react-component is-logged-in="true" reactive-elements-no-boolean-transform>Hello world</my-react-component>
 ```
 
-Exposing components methods on custom element
----------------------------------------------
-If you want to expose React component methods on custom element - assign them to component as following:
+## Exposing components methods on custom element
+
+If you want to expose React component methods on custom element - assign them to
+component as following:
+
 ```js
 componentDidMount: function() {
     this.props.container.setTextContent = this.setTextContent.bind(this);
 }
 ```
 
-Handling attributes change
---------------------------
+## Handling attributes change
 
-You may add `attributeChanged` callback to component in order to handle / modify / filter incoming values.
+You may add `attributeChanged` callback to component in order to handle / modify
+/ filter incoming values.
 
 ```js
 attributeChanged: function(attributeName, oldValue, newValue) {
@@ -84,21 +92,23 @@ attributeChanged: function(attributeName, oldValue, newValue) {
 }
 ```
 
-If you don't ever want to listen out to attributes changing (often you might know that none of them will), you can pass the option `ignoreAttributeChanged` to turn off the `attributeChanged` callback. This option was added in 0.9.0.
+If you don't ever want to listen out to attributes changing (often you might
+know that none of them will), you can pass the option `ignoreAttributeChanged`
+to turn off the `attributeChanged` callback. This option was added in 0.9.0.
 
 ```js
-document.registerReact('foo-bar', FooBar, { ignoreAttributeChanged: true })
+document.registerReact('foo-bar', FooBar, { ignoreAttributeChanged: true });
 ```
 
-Communicate via DOM events
----------------------------
+## Communicate via DOM events
 
 You may trigger DOM event from React component by using following snippet:
+
 ```js
 var event = new CustomEvent('change', {
-      bubbles: true
-  });
-React.findDOMNode(this).dispatchEvent(event)
+  bubbles: true,
+});
+React.findDOMNode(this).dispatchEvent(event);
 ```
 
 Subscribing to DOM events is similar:
@@ -107,34 +117,39 @@ Subscribing to DOM events is similar:
 React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
-Using `attachedCallback` (Added in 0.8.0)
---------------------------
+## Using `attachedCallback` (Added in 0.8.0)
 
-By default this module uses the web component `createdCallback`, so it kicks off the rendering process _before_ the component is fully attached to the DOM. In some cases you might prefer to delay the rendering process until the component is attached.
+By default this module uses the web component `createdCallback`, so it kicks off
+the rendering process _before_ the component is fully attached to the DOM. In
+some cases you might prefer to delay the rendering process until the component
+is attached.
 
 If this is the case, you can pass `renderOnAttached` as an option:
 
 ```js
 document.registerReact('example-component', 'ExampleComponent', {
   renderOnAttached: true,
-})
+});
 ```
 
-Dependencies
-------------
+## Dependencies
 
-- [React.js](https://github.com/facebook/react)
-- `function.bind` and `Object.create` support or polyfills
-- Custom elements support or [polyfill](https://github.com/WebReflection/document-register-element)
+* [React.js](https://github.com/facebook/react)
+* `function.bind` and `Object.create` support or polyfills
+* Custom elements support or
+  [polyfill](https://github.com/WebReflection/document-register-element)
 
-Custom elements polyfill behavior
----------------------------------
-Polyfill binds to `DOMContentLoaded` in order to process DOM so no custom elements exist until it fired. To prevent this hook into `DOMContentLoaded` and operate elements on it or after.
+## Custom elements polyfill behavior
 
-License
--------
+Polyfill binds to `DOMContentLoaded` in order to process DOM so no custom
+elements exist until it fired. To prevent this hook into `DOMContentLoaded` and
+operate elements on it or after.
+
+## License
+
 MIT: http://mit-license.org/
 
 Copyright 2014 Denis Radin aka [PixelsCommander](http://pixelscommander.com)
 
-Inspired by Christopher Chedeau`s [react-xtags](http://github.com/vjeux/react-xtags/)
+Inspired by Christopher Chedeau`s
+[react-xtags](http://github.com/vjeux/react-xtags/)
