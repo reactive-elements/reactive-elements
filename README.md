@@ -10,10 +10,6 @@ npm install reactive-elements
 yarn add reactive-elements
 ```
 
-[Live demo](http://pixelscommander.com/polygon/reactive-elements/example/)
-
-*UPD* Convert Angular and Backbone views as well with [MVC elements project](https://github.com/MVC-Elements)
-
 How to use?
 -------
 **Placing component in a pure HTML**
@@ -38,19 +34,17 @@ MyComponent = React.createClass({
 document.registerReact('my-react-component', MyComponent);
 ```
 
-**Find demo in corresponding folder.**
-
 Nesting
 -------
-Original children of a custom element is injected to component as ```this.props.children```.
+Original children of a custom element is injected to component as `this.props.children`.
 
 ```html
 <my-react-component>Hello world</my-react-component>
 ```
 
-In this case props.children is equal to "Hello world".
+In this case `this.props.children` is equal to "Hello world".
 
-Container node of the element is passed as ```this.props.container```. Both props.container and props.children have type of ```documentFragment```.
+Container node of the element is passed as `this.props.container`. Both props.container and props.children have type of `documentFragment`.
 
 Boolean attribute transforms (added in version 0.7.0)
 ----------------------------
@@ -75,12 +69,13 @@ If you want to expose React component methods on custom element - assign them to
 ```js
 componentDidMount: function() {
     this.props.container.setTextContent = this.setTextContent.bind(this);
-    ...
+}
 ```
 
 Handling attributes change
 --------------------------
-You may add ```attributeChanged``` callback to component in order to handle / modify / filter incoming values.
+
+You may add `attributeChanged` callback to component in order to handle / modify / filter incoming values.
 
 ```js
 attributeChanged: function(attributeName, oldValue, newValue) {
@@ -89,21 +84,30 @@ attributeChanged: function(attributeName, oldValue, newValue) {
 }
 ```
 
+If you don't ever want to listen out to attributes changing (often you might know that none of them will), you can pass the option `ignoreAttributeChanged` to turn off the `attributeChanged` callback. This option was added in 0.9.0.
+
+```js
+document.registerReact('foo-bar', FooBar, { ignoreAttributeChanged: true })
+```
+
 Communicate via DOM events
 ---------------------------
+
 You may trigger DOM event from React component by using following snippet:
 ```js
 var event = new CustomEvent('change', {
       bubbles: true
-    });
+  });
 React.findDOMNode(this).dispatchEvent(event)
 ```
+
 Subscribing to DOM events is similar:
+
 ```js
 React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
-Using attachedCallback
+Using `attachedCallback` (Added in 0.8.0)
 --------------------------
 
 By default this module uses the web component `createdCallback`, so it kicks off the rendering process _before_ the component is fully attached to the DOM. In some cases you might prefer to delay the rendering process until the component is attached.
@@ -118,13 +122,14 @@ document.registerReact('example-component', 'ExampleComponent', {
 
 Dependencies
 ------------
+
 - [React.js](https://github.com/facebook/react)
-- ```function.bind``` and ```Object.create``` support or polyfills
+- `function.bind` and `Object.create` support or polyfills
 - Custom elements support or [polyfill](https://github.com/WebReflection/document-register-element)
 
 Custom elements polyfill behavior
 ---------------------------------
-Polyfill binds to ```DOMContentLoaded``` in order to process DOM so no custom elements exist until it fired. To prevent this hook into ```DOMContentLoaded``` and operate elements on it or after.
+Polyfill binds to `DOMContentLoaded` in order to process DOM so no custom elements exist until it fired. To prevent this hook into `DOMContentLoaded` and operate elements on it or after.
 
 License
 -------
