@@ -26,6 +26,11 @@ describe('utils', function() {
       expect(jsonDeserialized.language).toEqual('javascript');
     });
 
+    it('should pass through the empty string', function() {
+      var emptyStringAttr = ReactiveElements.utils.parseAttributeValue('');
+      expect(emptyStringAttr).toEqual('');
+    });
+
     it("should convert string 'true' to boolean", function() {
       var boolAttr = ReactiveElements.utils.parseAttributeValue('true');
       expect(boolAttr).toEqual(true);
