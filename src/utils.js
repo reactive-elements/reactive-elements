@@ -85,7 +85,7 @@ exports.attributeNameToPropertyName = function(attributeName) {
 };
 
 exports.parseAttributeValue = function(value, transformOptions) {
-  if (!value) {
+  if (value == undefined) {
     return null;
   }
 
