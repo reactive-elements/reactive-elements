@@ -6,7 +6,7 @@ export default function reactiveElements(elementName, ReactComponent, options) {
   function create(parent, props) {
     var element = React.createElement(ReactComponent, props);
     parent.reactiveElement = element;
-    return ReactDOM.render(element, parent, props.onRender);
+    return ReactDOM.render(element, parent.shadowRoot, props.onRender);
   }
 
   function exposeDefaultMethods(reactComponent, customElement) {
@@ -21,8 +21,13 @@ export default function reactiveElements(elementName, ReactComponent, options) {
     constructor() {
       const self = super();
 
+      self.attachShadow({ mode: 'open' });
+
       const observer = new MutationObserver(() => {
-        reactiveElements(elementName, self);
+        ReactDOM.unmountComponentAtNode(self);
+        const props = utils.getProps(self);
+        props.children = utils.getChildren(self);
+        create(self, props);
       });
 
       observer.observe(self, {
