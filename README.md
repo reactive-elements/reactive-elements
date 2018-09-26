@@ -11,6 +11,8 @@ yarn add reactive-elements
 
 ## How to use?
 
+### Directly in a browser
+
 **Placing component in a pure HTML**
 
 ```html
@@ -35,7 +37,22 @@ MyComponent = React.createClass({
   },
 });
 
-document.registerReact('my-react-component', MyComponent);
+ReactiveElements('my-react-component', MyComponent);
+```
+
+### With Bundler
+
+```js
+import React, { Component } from 'react';
+import ReactiveElements from 'reactive-elements';
+
+class Welcome extends Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+ReactiveElements('welcome-component', Welcome);
 ```
 
 ## Nesting
@@ -92,14 +109,6 @@ attributeChanged: function(attributeName, oldValue, newValue) {
 }
 ```
 
-If you don't ever want to listen out to attributes changing (often you might
-know that none of them will), you can pass the option `ignoreAttributeChanged`
-to turn off the `attributeChanged` callback. This option was added in 0.9.0.
-
-```js
-document.registerReact('foo-bar', FooBar, { ignoreAttributeChanged: true });
-```
-
 ## Communicate via DOM events
 
 You may trigger DOM event from React component by using following snippet:
@@ -117,33 +126,24 @@ Subscribing to DOM events is similar:
 React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
-## Using `attachedCallback` (Added in 0.8.0)
-
-By default this module uses the web component `createdCallback`, so it kicks off
-the rendering process _before_ the component is fully attached to the DOM. In
-some cases you might prefer to delay the rendering process until the component
-is attached.
-
-If this is the case, you can pass `renderOnAttached` as an option:
-
-```js
-document.registerReact('example-component', 'ExampleComponent', {
-  renderOnAttached: true,
-});
-```
-
 ## Dependencies
 
 * [React.js](https://github.com/facebook/react)
-* `function.bind` and `Object.create` support or polyfills
-* Custom elements support or
-  [polyfill](https://github.com/WebReflection/document-register-element)
-
-## Custom elements polyfill behavior
-
-Polyfill binds to `DOMContentLoaded` in order to process DOM so no custom
-elements exist until it fired. To prevent this hook into `DOMContentLoaded` and
-operate elements on it or after.
+* [React DOM](https://github.com/facebook/react)
+* Custom elements support or [polyfill](https://github.com/WebComponents/webcomponentsjs)
+* Support or [polyfills](https://github.com/zloirock/core-js) for:
+   * `regexp.match`
+   * `regexp.replace`
+   * `object.define-setter`
+   * `object.define-getter`
+   * `object.define-property`
+   * `function.name`
+   * `web.dom.iterable`
+   * `array.iterator`
+   * `object.keys`
+   * `object.set-prototype-of`
+   * `reflect.construct`
+   * `function.bind`
 
 ## License
 
