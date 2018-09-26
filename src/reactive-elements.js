@@ -2,7 +2,7 @@ import * as utils from './utils';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-export default function(elementName, ReactComponent, options) {
+export default function reactiveElements(elementName, ReactComponent, options) {
   function create(parent, props) {
     var element = React.createElement(ReactComponent, props);
     parent.reactiveElement = element;
@@ -22,7 +22,7 @@ export default function(elementName, ReactComponent, options) {
       const self = super();
 
       const observer = new MutationObserver(() => {
-        registerElement(elementName, self);
+        reactiveElements(elementName, self);
       });
 
       observer.observe(self, {
