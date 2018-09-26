@@ -1,8 +1,8 @@
-var React = window.React || require('react');
-var noBooleanTransformName = 'reactive-elements-no-boolean-transform';
+import * as React from 'react';
+const noBooleanTransformName = 'reactive-elements-no-boolean-transform';
 
-var getAllProperties = function(obj) {
-  var props = {};
+function getAllProperties(obj) {
+  const props = {};
   while (obj && obj !== React.Component.prototype && obj !== Object.prototype) {
     var propNames = Object.getOwnPropertyNames(obj);
     for (var i = 0; i < propNames.length; i++) {
@@ -12,10 +12,10 @@ var getAllProperties = function(obj) {
   }
   delete props.constructor;
   return Object.keys(props);
-};
+}
 
-exports.extend = function(extensible, extending) {
-  var props = getAllProperties(extending);
+function extend(extensible, extending) {
+  const props = getAllProperties(extending);
   for (var i = 0; i < props.length; i++) {
     var prop = props[i];
     if (!(prop in extensible)) {
@@ -23,10 +23,10 @@ exports.extend = function(extensible, extending) {
       extensible[prop] = val;
     }
   }
-};
+}
 
-var elementHasNoBooleanTransformAttribute = function(el) {
-  var foundAttribute = false;
+function elementHasNoBooleanTransformAttribute(el) {
+  let foundAttribute = false;
   for (var i = 0; i < el.attributes.length; i++) {
     var attribute = el.attributes[i];
     if (attribute.name === noBooleanTransformName) {
@@ -35,18 +35,18 @@ var elementHasNoBooleanTransformAttribute = function(el) {
     }
   }
   return foundAttribute;
-};
+}
 
-exports.getProps = function(el) {
-  var props = {};
-  var noBooleanTransforms = elementHasNoBooleanTransformAttribute(el);
+function getProps(el) {
+  const props = {};
+  const noBooleanTransforms = elementHasNoBooleanTransformAttribute(el);
 
   for (var i = 0; i < el.attributes.length; i++) {
     var attribute = el.attributes[i];
     if (attribute.name === noBooleanTransformName) continue;
 
-    var name = exports.attributeNameToPropertyName(attribute.name);
-    props[name] = exports.parseAttributeValue(attribute.value, {
+    var name = attributeNameToPropertyName(attribute.name);
+    props[name] = parseAttributeValue(attribute.value, {
       noBooleanTransforms: noBooleanTransforms,
     });
   }
@@ -54,9 +54,9 @@ exports.getProps = function(el) {
   props.container = el;
 
   return props;
-};
+}
 
-exports.getterSetter = function(
+function getterSetter(
   variableParent,
   variableName,
   getterFunction,
@@ -74,17 +74,17 @@ exports.getterSetter = function(
 
   variableParent['get' + variableName] = getterFunction;
   variableParent['set' + variableName] = setterFunction;
-};
+}
 
-exports.attributeNameToPropertyName = function(attributeName) {
+function attributeNameToPropertyName(attributeName) {
   return attributeName
     .replace(/^(x|data)[-_:]/i, '')
     .replace(/[-_:](.)/g, function(x, chr) {
       return chr.toUpperCase();
     });
-};
+}
 
-exports.parseAttributeValue = function(value, transformOptions) {
+function parseAttributeValue(value, transformOptions) {
   if (value == undefined) {
     return null;
   }
@@ -116,17 +116,29 @@ exports.parseAttributeValue = function(value, transformOptions) {
   }
 
   return value;
-};
+}
 
-exports.getChildren = function(el) {
-  var fragment = document.createDocumentFragment();
+function getChildren(el) {
+  const fragment = document.createDocumentFragment();
   while (el.childNodes.length) {
     fragment.appendChild(el.childNodes[0]);
   }
   return fragment;
-};
+}
 
-exports.shallowCopy = function(a, b) {
-  for (var key in b) a[key] = b[key];
+function shallowCopy(a, b) {
+  for (const key in b) a[key] = b[key];
   return a;
+}
+
+export {
+  getAllProperties,
+  extend,
+  elementHasNoBooleanTransformAttribute,
+  getProps,
+  getterSetter,
+  attributeNameToPropertyName,
+  parseAttributeValue,
+  getChildren,
+  shallowCopy,
 };

@@ -10,13 +10,17 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: ['test/unit.spec.js'],
+    files: [
+      'node_modules/react/umd/react.development.js',
+      'node_modules/react-dom/umd/react-dom.development.js',
+      'dist/reactive-elements.iife.js',
+      'test/unit.spec.js',
+    ],
 
     // list of files to exclude
     exclude: [],
 
     plugins: [
-      require('karma-webpack'),
       'karma-sourcemap-loader',
       'karma-chrome-launcher',
       'karma-jasmine',
@@ -25,7 +29,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/unit.spec.js': ['webpack', 'sourcemap'],
+      'test/unit.spec.js': ['sourcemap'],
     },
 
     // test results reporter to use
@@ -61,8 +65,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
-    webpackMiddleware: {
-      noInfo: true,
-    },
   });
 };

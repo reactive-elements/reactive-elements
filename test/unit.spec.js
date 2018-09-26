@@ -1,5 +1,3 @@
-var ReactiveElements = require('../dist/reactive-elements');
-
 describe('utils', function() {
   window.items = {
     city: 'Amsterdam',

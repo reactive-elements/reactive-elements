@@ -1,15 +1,17 @@
 {
   "name": "reactive-elements",
   "version": "0.10.0",
-  "description": "Allows to use React.js component as custom element",
-  "main": "src/reactive-elements.js",
+  "description": "use a React.js component as web component",
+  "main": "dist/reactive-elements.cjs.js",
+  "module": "dist/reactive-elements.esm.mjs",
+  "source": "src/reactive-elements.js",
   "scripts": {
-    "test": "npm run build && ./node_modules/.bin/karma start",
+    "test": "npm run build && karma start",
     "prettier-check":
       "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --list-different",
     "prettier-write":
       "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --write",
-    "build": "./node_modules/.bin/webpack && ./node_modules/.bin/webpack -p"
+    "build": "rollup -c"
   },
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
   "repository": {
@@ -62,6 +64,10 @@
     {
       "name": "Jack Franklin",
       "email": "jack@jackfranklin.net"
+    },
+    {
+      "name": "Christian Murphy",
+      "email": "christian.murphy.42@gmail.com"
     }
   ],
   "license": "MIT",
@@ -70,20 +76,22 @@
     "email": "denis.radin@gmail.com"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "jasmine": "^3.0.0",
     "jasmine-core": "^3.0.0",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.2",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.0",
     "prettier": "^1.12.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "webpack": "^1.13.1"
-  },
-  "dependencies": {
-    "document-register-element": "^1.7.2"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "rollup": "^0.66.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
