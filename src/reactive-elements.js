@@ -24,7 +24,7 @@ export default function reactiveElements(elementName, ReactComponent, options) {
       self.attachShadow({ mode: 'open' });
 
       const observer = new MutationObserver(() => {
-        ReactDOM.unmountComponentAtNode(self);
+        ReactDOM.unmountComponentAtNode(self.shadowRoot);
         const props = utils.getProps(self);
         props.children = utils.getChildren(self);
         create(self, props);
@@ -61,7 +61,7 @@ export default function reactiveElements(elementName, ReactComponent, options) {
     }
 
     disconnectedCallback() {
-      ReactDOM.unmountComponentAtNode(this);
+      ReactDOM.unmountComponentAtNode(this.shadowRoot);
     }
   }
 
