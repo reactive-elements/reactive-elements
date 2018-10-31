@@ -128,23 +128,23 @@ React.findDOMNode(this).addEventListener('change', function(e){...});
 
 ## Dependencies
 
-* [React.js](https://github.com/facebook/react)
-* [React DOM](https://github.com/facebook/react)
-* Custom elements support or
+- [React.js](https://github.com/facebook/react)
+- [React DOM](https://github.com/facebook/react)
+- Custom elements support or
   [polyfill](https://github.com/WebComponents/webcomponentsjs)
-* Support or [polyfills](https://github.com/zloirock/core-js) for:
-  * `regexp.match`
-  * `regexp.replace`
-  * `object.define-setter`
-  * `object.define-getter`
-  * `object.define-property`
-  * `function.name`
-  * `web.dom.iterable`
-  * `array.iterator`
-  * `object.keys`
-  * `object.set-prototype-of`
-  * `reflect.construct`
-  * `function.bind`
+- Support or [polyfills](https://github.com/zloirock/core-js) for:
+  - `regexp.match`
+  - `regexp.replace`
+  - `object.define-setter`
+  - `object.define-getter`
+  - `object.define-property`
+  - `function.name`
+  - `web.dom.iterable`
+  - `array.iterator`
+  - `object.keys`
+  - `object.set-prototype-of`
+  - `reflect.construct`
+  - `function.bind`
 
 ## License
 

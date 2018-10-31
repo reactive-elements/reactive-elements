@@ -29,7 +29,9 @@ window.LGI.Carusel = React.createClass({
 
     return (
       <div>
-        &lt;my-reactive-element&gt;<ul style={styleObject}>{rows}</ul>&lt;/my-reactive-element&gt;
+        &lt;my-reactive-element&gt;
+        <ul style={styleObject}>{rows}</ul>
+        &lt;/my-reactive-element&gt;
       </div>
     );
   },
