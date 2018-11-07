@@ -3,7 +3,7 @@
   "version": "0.10.0",
   "description": "use a React.js component as web component",
   "main": "dist/reactive-elements.cjs.js",
-  "module": "dist/reactive-elements.esm.mjs",
+  "module": "dist/reactive-elements.esm.js",
   "source": "src/reactive-elements.js",
   "scripts": {
     "test": "npm run build && karma start",
