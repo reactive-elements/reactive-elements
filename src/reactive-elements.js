@@ -1,39 +1,47 @@
-(function() {
-  var registerElement = document.registerElement || document.register;
+import * as utils from './utils';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-  if (registerElement) {
-    registerElement = registerElement.bind(document);
-  } else {
-    throw new Error('No custom element support or polyfill found!');
+export default function reactiveElements(elementName, ReactComponent, options) {
+  function create(parent, props) {
+    var element = React.createElement(ReactComponent, props);
+    parent.reactiveElement = element;
+    return ReactDOM.render(element, parent.shadowRoot, props.onRender);
   }
 
-  var React = window.React || require('react');
-  var ReactDOM = window.ReactDOM || require('react-dom');
-  var utils = require('./utils');
+  function exposeDefaultMethods(reactComponent, customElement) {
+    customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
+  }
 
-  exports.registerReact = function(elementName, ReactComponent, options) {
-    options = options || {
-      renderOnAttached: false,
-      ignoreAttributeChanged: false,
-    };
+  function exposeMethods(reactComponent, customElement) {
+    utils.extend(customElement, reactComponent);
+  }
 
-    var elementPrototype = Object.create(HTMLElement.prototype);
-    var reactElement;
+  class CustomElement extends HTMLElement {
+    constructor() {
+      const self = super();
 
-    function create(parent, props) {
-      var element = React.createElement(ReactComponent, props);
-      parent.reactiveElement = element;
-      return ReactDOM.render(element, parent, props.onRender);
+      self.attachShadow({ mode: 'open' });
+
+      const observer = new MutationObserver(() => {
+        ReactDOM.unmountComponentAtNode(self.shadowRoot);
+        const props = utils.getProps(self);
+        props.children = utils.getChildren(self);
+        create(self, props);
+      });
+
+      observer.observe(self, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+        attributes: true,
+      });
     }
 
-    var renderCallback = options.renderOnAttached
-      ? 'attachedCallback'
-      : 'createdCallback';
-
-    elementPrototype[renderCallback] = function() {
-      var props = utils.getProps(this);
+    connectedCallback() {
+      const props = utils.getProps(this);
       props.children = utils.getChildren(this);
-      reactElement = create(this, props);
+      let reactElement = create(this, props);
 
       if (reactElement !== null) {
         exposeMethods(reactElement, reactElement.props.container);
@@ -50,40 +58,16 @@
           }
         );
       }
-    };
+    }
 
-    elementPrototype.detachedCallback = function() {
-      ReactDOM.unmountComponentAtNode(this);
-    };
-
-    elementPrototype.attributeChangedCallback = function(
-      name,
-      oldValue,
-      newValue
-    ) {
-      if (options.ignoreAttributeChanged === true) {
-        return;
-      }
-
-      // we only care about attribute changes once we've rendered initially
-      if (this.reactiveElement) {
-        var props = utils.getProps(this);
-        reactElement = create(this, props);
-      }
-    };
-
-    registerElement(elementName, { prototype: elementPrototype });
-  };
-
-  function exposeDefaultMethods(reactComponent, customElement) {
-    customElement.forceUpdate = reactComponent.forceUpdate.bind(reactComponent);
+    disconnectedCallback() {
+      ReactDOM.unmountComponentAtNode(this.shadowRoot);
+    }
   }
 
-  function exposeMethods(reactComponent, customElement) {
-    utils.extend(customElement, reactComponent);
-  }
+  customElements.define(elementName, CustomElement);
 
-  exports.utils = utils;
+  return CustomElement;
+}
 
-  document.registerReact = exports.registerReact;
-})();
+export { utils };
