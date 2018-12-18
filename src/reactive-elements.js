@@ -2,7 +2,7 @@ import * as utils from './utils';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-export default function reactiveElements(elementName, ReactComponent, options) {
+function reactiveElements(elementName, ReactComponent, options) {
   function create(parent, props) {
     var element = React.createElement(ReactComponent, props);
     parent.reactiveElement = element;
@@ -70,4 +70,5 @@ export default function reactiveElements(elementName, ReactComponent, options) {
   return CustomElement;
 }
 
-export { utils };
+reactiveElements.utils = utils;
+export default reactiveElements;
