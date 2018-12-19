@@ -2,6 +2,12 @@
     <img alt="Reactive Elements" src="http://pixelscommander.com/polygon/reactive-elements/assets/logo-reactive-elements-small.png"/>
 </a>
 
+# Note! The docs here are for the v1.0.0 alpha. This is _not_ ready for production use yet.
+
+You should use this README, which refers to 0.10.0, the latest stable version on npm: https://github.com/PixelsCommander/ReactiveElements/blob/7cce3d7b472989878ac1433cec0e8168fd4136aa/README.md
+
+
+
 # Convert React.js components into Web Components
 
 ```sh
