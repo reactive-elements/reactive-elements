@@ -1,28 +1,26 @@
 {
   "name": "reactive-elements",
-  "version": "0.10.0",
+  "version": "1.0.0-alpha.0",
   "description": "use a React.js component as web component",
   "main": "dist/reactive-elements.cjs.js",
   "module": "dist/reactive-elements.esm.js",
   "source": "src/reactive-elements.js",
   "scripts": {
     "test": "npm run build && karma start",
-    "prettier-check": "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --list-different",
-    "prettier-write": "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --write",
+    "prettier-check":
+      "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --list-different",
+    "prettier-write":
+      "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --write",
     "build": "rollup -c",
-    "dev-example": "yarn webpack-dev-server --config example/webpack.config.js --mode development"
+    "dev-example":
+      "yarn webpack-dev-server --config example/webpack.config.js --mode development"
   },
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
   "repository": {
     "type": "git",
     "url": "https://github.com/PixelsCommander/ReactiveElements.git"
   },
-  "keywords": [
-    "react",
-    "web-components",
-    "custom elements",
-    "reactjs"
-  ],
+  "keywords": ["react", "web-components", "custom elements", "reactjs"],
   "author": {
     "name": "Denis Radin aka PixelsCommander",
     "email": "denis.radin@gmail.com",
