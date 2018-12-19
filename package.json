@@ -15,6 +15,12 @@
     "dev-example":
       "yarn webpack-dev-server --config example/webpack.config.js --mode development"
   },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "dist/",
+    "example/"
+  ],
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
   "repository": {
     "type": "git",
