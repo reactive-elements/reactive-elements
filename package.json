@@ -9,7 +9,8 @@
     "test": "npm run build && karma start",
     "prettier-check": "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --list-different",
     "prettier-write": "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --write",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "dev-example": "yarn webpack-dev-server --config example/webpack.config.js --mode development"
   },
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
   "repository": {
@@ -81,6 +82,8 @@
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "html-webpack-plugin": "^3.2.0",
     "jasmine": "^3.0.0",
     "jasmine-core": "^3.0.0",
     "karma": "^2.0.0",
@@ -93,7 +96,10 @@
     "rollup": "^0.66.2",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.1.8",
-    "rollup-plugin-node-resolve": "^3.4.0"
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",

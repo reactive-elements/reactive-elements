@@ -2,3 +2,7 @@
 node_modules
 bower_components
 dist/
+
+example/dist
+example/index.html
+example/example-bundle.js
