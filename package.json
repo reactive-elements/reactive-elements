@@ -13,14 +13,10 @@
       "prettier '{src,demo,test}/**/*' '*.md' '*.js' 'package.json' --write",
     "build": "rollup -c",
     "dev-example":
-      "yarn webpack-dev-server --config example/webpack.config.js --mode development"
+      "yarn webpack-dev-server --config example/webpack.config.js --mode development",
+    "prepack": "npm run test"
   },
-  "files": [
-    "README.md",
-    "CHANGELOG.md",
-    "dist/",
-    "example/"
-  ],
+  "files": ["README.md", "CHANGELOG.md", "dist/", "example/"],
   "homepage": "https://github.com/PixelsCommander/ReactiveElements",
   "repository": {
     "type": "git",
