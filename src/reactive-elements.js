@@ -22,20 +22,6 @@ function reactiveElements(elementName, ReactComponent, options) {
       const self = super();
 
       self.attachShadow({ mode: 'open' });
-
-      const observer = new MutationObserver(() => {
-        ReactDOM.unmountComponentAtNode(self.shadowRoot);
-        const props = utils.getProps(self);
-        props.children = utils.getChildren(self);
-        create(self, props);
-      });
-
-      observer.observe(self, {
-        childList: true,
-        subtree: true,
-        characterData: true,
-        attributes: true,
-      });
     }
 
     connectedCallback() {
