@@ -2,11 +2,20 @@ import * as utils from './utils';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+const getRenderRoot = (element, useShadowDom) =>
+  useShadowDom ? element.shadowRoot : element;
+
 function reactiveElements(elementName, ReactComponent, options) {
+  const { useShadowDom = false } = options;
+
   function create(parent, props) {
     var element = React.createElement(ReactComponent, props);
     parent.reactiveElement = element;
-    return ReactDOM.render(element, parent.shadowRoot, props.onRender);
+    return ReactDOM.render(
+      element,
+      getRenderRoot(parent, useShadowDom),
+      props.onRender
+    );
   }
 
   function exposeDefaultMethods(reactComponent, customElement) {
@@ -21,10 +30,10 @@ function reactiveElements(elementName, ReactComponent, options) {
     constructor() {
       const self = super();
 
-      self.attachShadow({ mode: 'open' });
+      if (useShadowDom) self.attachShadow({ mode: 'open' });
 
       const observer = new MutationObserver(() => {
-        ReactDOM.unmountComponentAtNode(self.shadowRoot);
+        ReactDOM.unmountComponentAtNode(getRenderRoot(self, useShadowDom));
         const props = utils.getProps(self);
         props.children = utils.getChildren(self);
         create(self, props);
@@ -61,7 +70,7 @@ function reactiveElements(elementName, ReactComponent, options) {
     }
 
     disconnectedCallback() {
-      ReactDOM.unmountComponentAtNode(this.shadowRoot);
+      ReactDOM.unmountComponentAtNode(getRenderRoot(this, useShadowDom));
     }
   }
 

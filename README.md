@@ -132,6 +132,18 @@ Subscribing to DOM events is similar:
 React.findDOMNode(this).addEventListener('change', function(e){...});
 ```
 
+## Options
+
+You can also specify options to the `ReactiveElements` call, e.g.
+
+```js
+ReactiveElements('welcome-component', Welcome, options);
+```
+
+### `options.useShadowDom` _(default `false`)_
+
+By default, your React element is rendered directly into the web-component root. However, by setting this option - your React element will instead be rendered in a [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) inside the web-component instead.
+
 ## Dependencies
 
 - [React.js](https://github.com/facebook/react)
