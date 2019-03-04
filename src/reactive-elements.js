@@ -33,9 +33,12 @@ function reactiveElements(elementName, ReactComponent, options) {
       if (useShadowDom) self.attachShadow({ mode: 'open' });
 
       const observer = new MutationObserver(() => {
-        ReactDOM.unmountComponentAtNode(getRenderRoot(self, useShadowDom));
         const props = utils.getProps(self);
-        props.children = utils.getChildren(self);
+        // we reuse the `childrenFragment`, rather than creating a new fragment,
+        // as this will cause a mutation in the current React component (because
+        // of the way that DOM nodes must be unique)
+        // but the fragment is a reference, so this is fine to keep a hold of
+        props.children = this.childrenFragment;
         create(self, props);
       });
 
@@ -49,7 +52,9 @@ function reactiveElements(elementName, ReactComponent, options) {
 
     connectedCallback() {
       const props = utils.getProps(this);
-      props.children = utils.getChildren(this);
+      // save a `childrenFragment` to reuse later, on mutations (this is okay
+      // because the fragment is effectively a reference to the children)
+      this.childrenFragment = props.children = utils.getChildren(this);
       let reactElement = create(this, props);
 
       if (reactElement !== null) {
