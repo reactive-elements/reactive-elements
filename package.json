@@ -17,10 +17,10 @@
     "prepack": "npm run test"
   },
   "files": ["README.md", "CHANGELOG.md", "dist/", "example/"],
-  "homepage": "https://github.com/PixelsCommander/ReactiveElements",
+  "homepage": "https://github.com/reactive-elements/reactive-elements",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PixelsCommander/ReactiveElements.git"
+    "url": "https://github.com/reactive-elements/reactive-elements.git"
   },
   "keywords": ["react", "web-components", "custom elements", "reactjs"],
   "author": {
