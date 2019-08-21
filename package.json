@@ -76,7 +76,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PixelsCommander/ReactiveElements/issues",
+    "url": "https://github.com/reactive-elements/reactive-elements/issues",
     "email": "denis.radin@gmail.com"
   },
   "devDependencies": {
